@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CarViewModel @Inject constructor(
-    val carRepository: CarRepository
+    private val carRepository: CarRepository
 ) : ViewModel() {
 
     val cars: MutableLiveData<Resource<List<Car>>> = MutableLiveData()
@@ -26,7 +26,7 @@ class CarViewModel @Inject constructor(
         getCars("50")
     }
 
-    fun getCars(limit: String) = viewModelScope.launch {
+    private fun getCars(limit: String) = viewModelScope.launch {
         cars.postValue(Resource.Loading())
         val response = carRepository.getCars(limit, page.toString())
         cars.postValue(handleCarResponse(response))

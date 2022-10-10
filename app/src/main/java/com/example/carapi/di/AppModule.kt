@@ -20,8 +20,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarsApi() : CarsApi {
-         val retrofit by lazy {
+    fun provideCarsApi(): CarsApi {
+        val retrofit by lazy {
             val logging = HttpLoggingInterceptor()
             logging.apply { logging.level = HttpLoggingInterceptor.Level.BODY }
             val client = OkHttpClient.Builder()
@@ -35,7 +35,7 @@ object AppModule {
                 .build()
         }
 
-        val api  by lazy {
+        val api by lazy {
             retrofit.create(CarsApi::class.java)
         }
 
@@ -44,7 +44,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarRepository(api: CarsApi): CarRepository{
+    fun provideCarRepository(api: CarsApi): CarRepository {
         return CarRepository(api)
     }
 

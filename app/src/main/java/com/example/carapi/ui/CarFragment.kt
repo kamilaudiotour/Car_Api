@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.carapi.R
 import com.example.carapi.util.Resource
 import dagger.hilt.android.AndroidEntryPoint

@@ -3,6 +3,7 @@ package com.example.carapi.di
 import com.example.carapi.api.CarsApi
 import com.example.carapi.api.MyInterceptor
 import com.example.carapi.repository.CarRepository
+import com.example.carapi.repository.CarRepositoryImpl
 import com.example.carapi.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -20,32 +21,36 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarsApi(): CarsApi {
-        val retrofit by lazy {
-            val logging = HttpLoggingInterceptor()
-            logging.apply { logging.level = HttpLoggingInterceptor.Level.BODY }
-            val client = OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .addInterceptor(MyInterceptor())
-                .build()
-            Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-        }
-
-        val api by lazy {
-            retrofit.create(CarsApi::class.java)
-        }
-
-        return api
+    fun provideCarsApi(client: OkHttpClient): CarsApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(CarsApi::class.java)
     }
 
     @Provides
     @Singleton
+    fun providesLogging() : HttpLoggingInterceptor = HttpLoggingInterceptor()
+
+    @Provides
+    @Singleton
+    fun providesInterceptor() : MyInterceptor = MyInterceptor()
+
+    @Provides
+    @Singleton
+    fun provideClient(logging: HttpLoggingInterceptor, interceptor: MyInterceptor): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .addInterceptor(interceptor)
+            .build()
+
+
+    @Provides
+    @Singleton
     fun provideCarRepository(api: CarsApi): CarRepository {
-        return CarRepository(api)
+        return CarRepositoryImpl(api)
     }
 
 

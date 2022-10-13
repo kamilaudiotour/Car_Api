@@ -1,4 +1,4 @@
-package com.example.carapi.ui
+package com.example.carapi.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.carapi.R
+import com.example.carapi.ui.CarViewModel
 import com.example.carapi.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 

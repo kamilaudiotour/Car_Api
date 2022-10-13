@@ -10,9 +10,23 @@ interface CarsApi {
     @GET("cars")
     suspend fun getCars(
         @Query("limit")
-        limit: String = "10",
+        limit: String ,
         @Query("page")
-        page: String = "0"
-    ): Response<List<Car>>
+        page: String
+    ): Response<MutableList<Car>>
+
+    @GET("cars")
+    suspend fun getCarByMake(
+        @Query("limit")
+        limit: String,
+        @Query("page")
+        page: String,
+        @Query("make")
+        make: String,
+        @Query("model")
+        model: String,
+        @Query("type")
+        type: String
+    ) : Response<MutableList<Car>>
 
 }

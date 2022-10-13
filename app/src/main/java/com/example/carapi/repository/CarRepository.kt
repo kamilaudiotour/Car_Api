@@ -1,9 +1,21 @@
 package com.example.carapi.repository
 
-import com.example.carapi.api.CarsApi
-import javax.inject.Inject
+import com.example.carapi.models.Car
+import retrofit2.Response
 
-class CarRepository @Inject constructor(val api: CarsApi) {
+interface CarRepository {
 
-    suspend fun getCars(limit: String, page: String) = api.getCars(limit, page)
+    suspend fun getCars(
+        limit: String,
+        page: String
+    ): Response<MutableList<Car>>
+
+    suspend fun getCarsByMake(
+        limit: String,
+        page: String,
+        make: String,
+        model: String,
+        type: String
+    ): Response<MutableList<Car>>
+
 }

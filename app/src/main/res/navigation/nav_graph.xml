@@ -7,7 +7,15 @@
 
     <fragment
         android:id="@+id/carFragment"
-        android:name="com.example.carapi.ui.fragments.CarFragment"
+        android:name="com.example.carapi.ui.fragments.CarMakesFragment"
         android:label="fragment_car"
-        tools:layout="@layout/fragment_car" />
+        tools:layout="@layout/fragment_car_makes" >
+        <action
+            android:id="@+id/action_carFragment_to_carModelsFragment"
+            app:destination="@id/carModelsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carModelsFragment"
+        android:name="com.example.carapi.ui.fragments.CarModelsFragment"
+        android:label="CarModelsFragment" />
 </navigation>

@@ -1,10 +1,10 @@
 package com.example.carapi.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
-import com.example.carapi.models.Car
+import androidx.paging.cachedIn
 import com.example.carapi.repository.CarRepository
 import com.example.carapi.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,38 +18,50 @@ class CarViewModel @Inject constructor(
     private val carRepository: CarRepository
 ) : ViewModel() {
 
-    val cars: MutableLiveData<Resource<List<Car>>> = MutableLiveData()
-    private var page = 0
-    private var limit = 10
-    var carResponse : MutableList<Car>? = null
+    val carMakes: MutableLiveData<Resource<List<String>>> = MutableLiveData()
+    private val carMake = MutableLiveData("BMW")
+    private val modelQuery = MutableLiveData("")
+    private var carMakesResponse: MutableList<String>? = null
 
     init {
-        getCars(limit.toString(), page.toString())
+        getCarMakes()
     }
 
-    private fun getCars(limit: String, page: String) = viewModelScope.launch {
-        cars.postValue(Resource.Loading())
-        val response = carRepository.getCars(limit, page)
-        cars.postValue(handleCarResponse(response))
+    val listData = carMake.switchMap { carMake ->
+        modelQuery.switchMap { carModel ->
+            carRepository.carPagingSource(carMake, carModel).cachedIn(viewModelScope)
+        }
 
     }
 
-    private fun handleCarResponse(response: Response<MutableList<Car>>): Resource<List<Car>> {
+    private fun getCarMakes() = viewModelScope.launch {
+        carMakes.postValue(Resource.Loading())
+        val response = carRepository.getCarsMakes()
+        carMakes.postValue(handleCarMakesResponse(response))
+
+    }
+
+    private fun handleCarMakesResponse(response: Response<MutableList<String>>): Resource<List<String>> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                page++
-                if(carResponse == null){
-                    carResponse = resultResponse
+                if (carMakesResponse == null) {
+                    carMakesResponse = resultResponse
                 } else {
-                    val oldCars = carResponse
-                    val newCars = resultResponse
-                    oldCars?.addAll(newCars)
+                    val oldCarMakes = carMakesResponse
+                    oldCarMakes?.addAll(resultResponse)
 
                 }
-               // Log.d("response", response.body().toString())
-                return Resource.Success(carResponse ?: resultResponse)
+                return Resource.Success(carMakesResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun searchModel(query: String) {
+        modelQuery.value = query
+    }
+
+    fun onCarMakeClicked(make: String) {
+        carMake.value = make
     }
 }

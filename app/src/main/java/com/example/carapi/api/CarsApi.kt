@@ -7,16 +7,12 @@ import retrofit2.http.Query
 
 interface CarsApi {
 
-    @GET("cars")
-    suspend fun getCars(
-        @Query("limit")
-        limit: String ,
-        @Query("page")
-        page: String
-    ): Response<MutableList<Car>>
+    @GET("cars/makes")
+    suspend fun getCarsMakes(
+    ): Response<MutableList<String>>
 
     @GET("cars")
-    suspend fun getCarByMake(
+    suspend fun getCarsModels(
         @Query("limit")
         limit: String,
         @Query("page")
@@ -24,9 +20,7 @@ interface CarsApi {
         @Query("make")
         make: String,
         @Query("model")
-        model: String,
-        @Query("type")
-        type: String
-    ) : Response<MutableList<Car>>
+        model: String
+    ): Response<MutableList<Car>>
 
 }

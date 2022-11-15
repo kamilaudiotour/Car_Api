@@ -5,5 +5,5 @@ data class Car(
     val make: String,
     val model: String,
     val type: String,
-    val year: Int
+    val year: String
 )

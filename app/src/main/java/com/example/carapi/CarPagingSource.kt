@@ -22,6 +22,8 @@ class CarPagingSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Car> {
         val currentPage = params.key ?: CAR_MODELS_STARTING_PAGE
         return try {
+
+            //delay because of request limit in free version of database
             delay(1000)
             val response = carsApi.getCarsModels(
                 limit = params.loadSize.toString(),

@@ -43,7 +43,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
             when (response) {
                 is Resource.Success -> {
                     response.data?.let { carMakesResponse ->
-                        carMakesAdapter.submitList(carMakesResponse)
+                        carMakesAdapter.submitList(carMakesResponse.sorted())
                     }
                 }
                 is Resource.Error -> {

@@ -1,10 +1,10 @@
-package com.example.carapi
+package com.example.carapi.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.carapi.api.CarsApi
 import com.example.carapi.models.Car
-import com.example.carapi.repository.CarRepositoryImpl.Companion.NETWORK_PAGE_SIZE
+import com.example.carapi.repository.car.CarRepositoryImpl.Companion.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.delay
 import retrofit2.HttpException
 import javax.inject.Inject

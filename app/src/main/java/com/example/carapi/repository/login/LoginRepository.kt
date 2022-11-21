@@ -1,4 +1,4 @@
-package com.example.carapi.repository
+package com.example.carapi.repository.login
 
 import com.example.carapi.util.Resource
 import com.google.firebase.auth.FirebaseUser

@@ -1,4 +1,4 @@
-package com.example.carapi.ui.fragments
+package com.example.carapi.ui.car.fragments
 
 import android.os.Bundle
 import android.view.Menu
@@ -14,7 +14,7 @@ import androidx.lifecycle.Lifecycle
 import com.example.carapi.R
 import com.example.carapi.adapter.CarPagedAdapter
 import com.example.carapi.databinding.FragmentCarModelsBinding
-import com.example.carapi.ui.CarViewModel
+import com.example.carapi.ui.car.CarViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

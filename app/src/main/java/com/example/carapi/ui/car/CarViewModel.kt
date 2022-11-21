@@ -1,11 +1,11 @@
-package com.example.carapi.ui
+package com.example.carapi.ui.car
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.example.carapi.repository.CarRepository
+import com.example.carapi.repository.car.CarRepository
 import com.example.carapi.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

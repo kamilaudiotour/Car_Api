@@ -1,4 +1,4 @@
-package com.example.carapi.ui.fragments
+package com.example.carapi.ui.car.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import com.example.carapi.R
 import com.example.carapi.adapter.CarMakeClickListener
 import com.example.carapi.adapter.CarMakesListAdapter
 import com.example.carapi.databinding.FragmentCarMakesBinding
-import com.example.carapi.ui.CarViewModel
+import com.example.carapi.ui.car.CarViewModel
 import com.example.carapi.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 

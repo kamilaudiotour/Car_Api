@@ -2,10 +2,10 @@ package com.example.carapi.di
 
 import com.example.carapi.api.CarsApi
 import com.example.carapi.api.MyInterceptor
-import com.example.carapi.repository.CarRepository
-import com.example.carapi.repository.CarRepositoryImpl
-import com.example.carapi.repository.LoginRepository
-import com.example.carapi.repository.LoginRepositoryImpl
+import com.example.carapi.repository.car.CarRepository
+import com.example.carapi.repository.car.CarRepositoryImpl
+import com.example.carapi.repository.login.LoginRepository
+import com.example.carapi.repository.login.LoginRepositoryImpl
 import com.example.carapi.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module

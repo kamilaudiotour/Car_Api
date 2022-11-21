@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/carFragment"
-        android:name="com.example.carapi.ui.fragments.CarMakesFragment"
+        android:name="com.example.carapi.ui.car.fragments.CarMakesFragment"
         android:label="fragment_car"
         tools:layout="@layout/fragment_car_makes" >
         <action
@@ -16,6 +16,6 @@
     </fragment>
     <fragment
         android:id="@+id/carModelsFragment"
-        android:name="com.example.carapi.ui.fragments.CarModelsFragment"
+        android:name="com.example.carapi.ui.car.fragments.CarModelsFragment"
         android:label="CarModelsFragment" />
 </navigation>

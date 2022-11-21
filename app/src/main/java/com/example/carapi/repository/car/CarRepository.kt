@@ -1,4 +1,4 @@
-package com.example.carapi.repository
+package com.example.carapi.repository.car
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData

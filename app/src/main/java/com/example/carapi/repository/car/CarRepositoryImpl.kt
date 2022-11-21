@@ -1,4 +1,4 @@
-package com.example.carapi.repository
+package com.example.carapi.repository.car
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

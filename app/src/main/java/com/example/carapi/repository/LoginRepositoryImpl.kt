@@ -4,6 +4,7 @@ import com.example.carapi.util.Resource
 import com.example.carapi.util.await
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 
 class LoginRepositoryImpl(private val firebaseAuth: FirebaseAuth) : LoginRepository {
     override val currentUser: FirebaseUser?
@@ -13,7 +14,7 @@ class LoginRepositoryImpl(private val firebaseAuth: FirebaseAuth) : LoginReposit
         return try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             Resource.Success(result.user!!)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
             Resource.Error(e.message.toString())
         }
@@ -25,15 +26,18 @@ class LoginRepositoryImpl(private val firebaseAuth: FirebaseAuth) : LoginReposit
         password: String
     ): Resource<FirebaseUser> {
         return try {
-            val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            result?.user?.updateProfile(
+                UserProfileChangeRequest.Builder().setDisplayName(name).build()
+            )?.await()
             Resource.Success(result.user!!)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
             Resource.Error(e.message.toString())
         }
     }
 
     override fun logout() {
-        TODO("Not yet implemented")
+        firebaseAuth.signOut()
     }
 }

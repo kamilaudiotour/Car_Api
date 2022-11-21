@@ -5,8 +5,9 @@ import com.example.carapi.util.await
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import javax.inject.Inject
 
-class LoginRepositoryImpl(private val firebaseAuth: FirebaseAuth) : LoginRepository {
+class LoginRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth) : LoginRepository {
     override val currentUser: FirebaseUser?
         get() = firebaseAuth.currentUser
 

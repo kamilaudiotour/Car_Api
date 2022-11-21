@@ -4,7 +4,10 @@ import com.example.carapi.api.CarsApi
 import com.example.carapi.api.MyInterceptor
 import com.example.carapi.repository.CarRepository
 import com.example.carapi.repository.CarRepositoryImpl
+import com.example.carapi.repository.LoginRepository
+import com.example.carapi.repository.LoginRepositoryImpl
 import com.example.carapi.util.Constants
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,9 +52,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarRepository(api: CarsApi): CarRepository {
-        return CarRepositoryImpl(api)
-    }
+    fun provideCarRepository(api: CarsApi): CarRepository = CarRepositoryImpl(api)
+
+
+    @Provides
+    @Singleton
+    fun providesFirebaseAuth() : FirebaseAuth = FirebaseAuth.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository = LoginRepositoryImpl(firebaseAuth)
 
 
 }

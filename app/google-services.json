@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "874720862795",
+    "project_id": "car-api-e2dc3",
+    "storage_bucket": "car-api-e2dc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874720862795:android:4a2fbda27870305478e3ce",
+        "android_client_info": {
+          "package_name": "com.example.carapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874720862795-bcur22kl5s4bula792ptig046e1r2rvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDadGi1aBZLfCqe5RJPYoaDBpa14e4Pxv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874720862795-bcur22kl5s4bula792ptig046e1r2rvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

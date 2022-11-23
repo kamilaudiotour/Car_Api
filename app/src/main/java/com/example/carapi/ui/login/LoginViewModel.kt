@@ -15,14 +15,14 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val loginRepository: LoginRepository) :
     ViewModel() {
 
-    private val login = MutableLiveData<Resource<FirebaseUser>?>(null)
-    private val register = MutableLiveData<Resource<FirebaseUser>?>(null)
+     val login = MutableLiveData<Resource<FirebaseUser>?>(null)
+     val register = MutableLiveData<Resource<FirebaseUser>?>(null)
 
     val currentUser: FirebaseUser?
         get() = loginRepository.currentUser
 
     init {
-        if(loginRepository.currentUser != null) {
+        if (loginRepository.currentUser != null) {
             login.value = Resource.Success(loginRepository.currentUser!!)
         }
     }

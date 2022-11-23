@@ -3,7 +3,7 @@ package com.example.carapi.repository.car
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.example.carapi.CarPagingSource
+import com.example.carapi.paging.CarPagingSource
 import com.example.carapi.api.CarsApi
 import com.example.carapi.models.Car
 import retrofit2.Response

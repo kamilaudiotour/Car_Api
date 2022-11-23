@@ -7,4 +7,10 @@
     <string name="year">Year</string>
     <string name="type">Type</string>
     <string name="make">Make</string>
+    <string name="no_account_tv">Nie masz konta? Zarejestruj się</string>
+    <string name="login_btn">Zaloguj się</string>
+    <string name="password_hint">Hasło</string>
+    <string name="continue_login_tv">Zaloguj się,\nby kontynuować</string>
+    <string name="email_hint">Email</string>
+    <string name="forgot_password_tv">Zapomniałeś hasła?</string>
 </resources>

@@ -13,4 +13,7 @@
     <string name="continue_login_tv">Zaloguj się,\nby kontynuować</string>
     <string name="email_hint">Email</string>
     <string name="forgot_password_tv">Zapomniałeś hasła?</string>
+    <string name="register_btn">Zarejestruj</string>
+    <string name="name_hint">Nazwa</string>
+    <string name="register_tv">Stwórz konto</string>
 </resources>

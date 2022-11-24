@@ -39,6 +39,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 viewModel.login(email, password)
             }
         }
+
         viewModel.login.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {

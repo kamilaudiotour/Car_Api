@@ -15,8 +15,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val loginRepository: LoginRepository) :
     ViewModel() {
 
-     val login = MutableLiveData<Resource<FirebaseUser>?>(null)
-     val register = MutableLiveData<Resource<FirebaseUser>?>(null)
+    val login = MutableLiveData<Resource<FirebaseUser>?>(null)
+    val register = MutableLiveData<Resource<FirebaseUser>?>(null)
 
     val currentUser: FirebaseUser?
         get() = loginRepository.currentUser
@@ -41,6 +41,9 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
         register.value = result
     }
 
-    fun logout() = loginRepository.logout()
-
+    fun logout() {
+        loginRepository.logout()
+        login.value = null
+        register.value = null
+    }
 }

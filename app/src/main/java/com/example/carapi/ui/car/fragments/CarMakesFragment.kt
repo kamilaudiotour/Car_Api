@@ -14,6 +14,7 @@ import com.example.carapi.adapter.CarMakeClickListener
 import com.example.carapi.adapter.CarMakesListAdapter
 import com.example.carapi.databinding.FragmentCarMakesBinding
 import com.example.carapi.ui.car.CarViewModel
+import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +24,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
     private lateinit var binding: FragmentCarMakesBinding
     private lateinit var carMakesAdapter: CarMakesListAdapter
     private val viewModel by activityViewModels<CarViewModel>()
+    private val loginViewModel by activityViewModels<LoginViewModel>()
 
     private val TAG = "CAR MODELS FRAGMENT"
 
@@ -31,6 +33,11 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCarMakesBinding.inflate(inflater, container, false)
+
+        binding.logoutBtn.setOnClickListener{
+            loginViewModel.logout()
+            findNavController().navigate(R.id.action_carFragment_to_loginFragment)
+        }
 
         loadingCarMakesData()
         setupCarMakesRecyclerView()

@@ -1,4 +1,4 @@
-package com.example.carapi.ui.login.fragments
+package com.example.carapi.ui.car.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,7 +33,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
 
         binding.apply {
-            loginButton.setOnClickListener {
+            loginBtn.setOnClickListener {
                 val email = emailEt.text.toString()
                 val password = passwordEt.text.toString()
                 viewModel.login(email, password)
@@ -43,10 +43,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel.login.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
+                    binding.progressBar.visibility = View.GONE
                     findNavController().navigate(R.id.action_loginFragment_to_carFragment)
                 }
-                is Resource.Loading -> {}
+                is Resource.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
                 is Resource.Error -> {
+                    binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 }
 

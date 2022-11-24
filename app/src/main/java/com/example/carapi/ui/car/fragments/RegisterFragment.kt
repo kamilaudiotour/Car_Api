@@ -1,11 +1,13 @@
-package com.example.carapi.ui.login.fragments
+package com.example.carapi.ui.car.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.carapi.R
 import com.example.carapi.databinding.FragmentRegisterBinding
 import com.example.carapi.ui.login.LoginViewModel
@@ -36,13 +38,15 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         viewModel.register.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-
+                    binding.progressBar.visibility = View.GONE
+                    findNavController().navigate(R.id.action_registerFragment_to_carFragment)
                 }
                 is Resource.Error -> {
-
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 }
                 is Resource.Loading -> {
-
+                    binding.progressBar.visibility = View.VISIBLE
                 }
                 else -> {}
             }

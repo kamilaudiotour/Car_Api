@@ -1,4 +1,4 @@
-package com.example.carapi.ui.car.fragments
+package com.example.carapi.ui.login.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,18 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.carapi.R
-import com.example.carapi.databinding.FragmentLoginBinding
+import com.example.carapi.databinding.FragmentRegisterBinding
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.util.Resource
-import dagger.hilt.android.AndroidEntryPoint
 
+class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-@AndroidEntryPoint
-class LoginFragment : Fragment(R.layout.fragment_login) {
-
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentRegisterBinding
     private val viewModel by activityViewModels<LoginViewModel>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,39 +24,40 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         binding.apply {
-            loginBtn.setOnClickListener {
-                val email = emailEt.text.toString()
-                val password = passwordEt.text.toString()
-                viewModel.login(email, password)
+            registerBtn.setOnClickListener {
+                val email: String = emailEt.text.toString()
+                val name: String = nameEt.text.toString()
+                val password: String = passwordEt.text.toString()
+                viewModel.register(email, name, password)
+            }
+
+            haveAccountTv.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
 
-        viewModel.login.observe(viewLifecycleOwner) {
+        viewModel.register.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_loginFragment_to_carFragment)
-                }
-                is Resource.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
+                    findNavController().navigate(R.id.action_registerFragment_to_carFragment)
                 }
                 is Resource.Error -> {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 }
-
+                is Resource.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
                 else -> {}
             }
         }
 
-
         return binding.root
     }
-
-
 }
+
+

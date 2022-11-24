@@ -38,6 +38,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 val password = passwordEt.text.toString()
                 viewModel.login(email, password)
             }
+            newAccountTv.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            }
+
         }
 
         viewModel.login.observe(viewLifecycleOwner) {

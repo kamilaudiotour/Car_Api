@@ -17,6 +17,7 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
 
     val login = MutableLiveData<Resource<FirebaseUser>?>(null)
     val register = MutableLiveData<Resource<FirebaseUser>?>(null)
+    val reset = MutableLiveData<Resource<String>?>(null)
 
     val currentUser: FirebaseUser?
         get() = loginRepository.currentUser
@@ -45,5 +46,11 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
         loginRepository.logout()
         login.value = null
         register.value = null
+    }
+
+    fun resetPassword(email: String) {
+        reset.value = Resource.Loading()
+        val result = loginRepository.resetPassword(email)
+        reset.value = result
     }
 }

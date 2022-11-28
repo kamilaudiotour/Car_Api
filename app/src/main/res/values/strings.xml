@@ -17,4 +17,7 @@
     <string name="name_hint">Nazwa</string>
     <string name="register_tv">Stwórz konto</string>
     <string name="have_account_tv">Masz już konto? Kliknij, aby się zalogować</string>
+    <string name="back_to_login">Kliknij, aby wrócic do logowania</string>
+    <string name="reset_password_btn">Zresetuj hasło</string>
+    <string name="forgot_password_head_tv">Zapomniałeś hasła? \nUżyj e-maila do resetowania</string>
 </resources>

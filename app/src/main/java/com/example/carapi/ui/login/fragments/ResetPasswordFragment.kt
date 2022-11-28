@@ -32,20 +32,20 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password) {
                 val email = emailEt.text.toString().trim() { it <= ' ' }
                 viewModel.resetPassword(email)
                 if (email.isEmpty()) {
-                    Toast.makeText(requireContext(), "Najpierw wpisz swój adres e-mail", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Najpierw wpisz swój adres e-mail!", Toast.LENGTH_SHORT).show()
                 } else {
                     viewModel.reset.observe(viewLifecycleOwner){
                         when (it) {
                             is Resource.Success -> {
-
+                                Toast.makeText(requireContext(), "Wysłano pomyślnie!", Toast.LENGTH_SHORT).show()
                             }
                             is Resource.Error ->  {
-
+                                Toast.makeText(requireContext(), "Wystąpił błąd", Toast.LENGTH_SHORT).show()
                             }
                             is Resource.Loading -> {
 
                             }
-                            null -> TODO()
+                            null -> {}
                         }
                     }
                 }

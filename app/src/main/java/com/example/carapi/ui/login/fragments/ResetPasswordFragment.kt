@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.carapi.R
 import com.example.carapi.databinding.FragmentResetPasswordBinding
 import com.example.carapi.ui.login.LoginViewModel
-import com.example.carapi.util.Resource
 
 class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password) {
 
@@ -30,27 +30,21 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password) {
         binding.apply {
             resetBtn.setOnClickListener {
                 val email = emailEt.text.toString().trim() { it <= ' ' }
-                viewModel.resetPassword(email)
                 if (email.isEmpty()) {
-                    Toast.makeText(requireContext(), "Najpierw wpisz swój adres e-mail!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Najpierw wpisz swój adres email!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    viewModel.reset.observe(viewLifecycleOwner){
-                        when (it) {
-                            is Resource.Success -> {
-                                Toast.makeText(requireContext(), "Wysłano pomyślnie!", Toast.LENGTH_SHORT).show()
-                            }
-                            is Resource.Error ->  {
-                                Toast.makeText(requireContext(), "Wystąpił błąd", Toast.LENGTH_SHORT).show()
-                            }
-                            is Resource.Loading -> {
-
-                            }
-                            null -> {}
-                        }
-                    }
+                    viewModel.resetPassword(email, requireContext())
                 }
             }
+            haveAccountTv.setOnClickListener {
+                findNavController().navigate(R.id.action_resetPasswordFragment_to_loginFragment)
+            }
         }
+
 
 
 

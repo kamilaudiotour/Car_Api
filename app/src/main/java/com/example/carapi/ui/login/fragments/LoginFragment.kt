@@ -41,24 +41,27 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             newAccountTv.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
+            forgotPasswordTv.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
+            }
 
         }
 
         viewModel.login.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     findNavController().navigate(R.id.action_loginFragment_to_carFragment)
                 }
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.visibility = View.INVISIBLE
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 }
 
-                else -> {}
+                else -> {binding.progressBar.visibility = View.VISIBLE}
             }
         }
 

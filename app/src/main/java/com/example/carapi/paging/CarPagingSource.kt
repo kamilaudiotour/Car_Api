@@ -32,6 +32,7 @@ class CarPagingSource @Inject constructor(
                 model
             )
             val data = response.body() ?: emptyList()
+
             val responseData = mutableListOf<Car>()
             responseData.addAll(data)
 

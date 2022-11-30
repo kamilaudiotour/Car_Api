@@ -1,5 +1,6 @@
 package com.example.carapi.ui.login
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,7 +18,7 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
 
     val login = MutableLiveData<Resource<FirebaseUser>?>(null)
     val register = MutableLiveData<Resource<FirebaseUser>?>(null)
-    val reset = MutableLiveData<Resource<String>?>(null)
+
 
     val currentUser: FirebaseUser?
         get() = loginRepository.currentUser
@@ -48,9 +49,8 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
         register.value = null
     }
 
-    fun resetPassword(email: String) {
-        reset.value = Resource.Loading()
-        val result = loginRepository.resetPassword(email)
-        reset.value = result
+    fun resetPassword(email: String, context: Context) {
+        loginRepository.resetPassword(email, context)
+
+        }
     }
-}

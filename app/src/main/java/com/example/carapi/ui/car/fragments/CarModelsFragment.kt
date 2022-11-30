@@ -30,9 +30,9 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
 
         _binding = FragmentCarModelsBinding.bind(view)
         setupRecyclerView()
+
 // Search menu functionality
         val menuHost: MenuHost = requireActivity()
-
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_car_models, menu)

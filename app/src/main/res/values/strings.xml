@@ -20,4 +20,6 @@
     <string name="back_to_login">Kliknij, aby wrócic do logowania</string>
     <string name="reset_password_btn">Zresetuj hasło</string>
     <string name="forgot_password_head_tv">Zapomniałeś hasła? \nUżyj e-maila do resetowania</string>
+    <string name="dashboard_head_tv">My Dashboard</string>
+    <string name="car_logo_content_description">car logo</string>
 </resources>

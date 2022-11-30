@@ -1,9 +1,9 @@
 package com.example.carapi.repository.login
 
+import android.content.Context
 import android.widget.Toast
 import com.example.carapi.util.Resource
 import com.example.carapi.util.await
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -24,6 +24,7 @@ class LoginRepositoryImpl @Inject constructor(private val firebaseAuth: Firebase
         }
     }
 
+
     override suspend fun register(
         email: String,
         name: String,
@@ -41,18 +42,21 @@ class LoginRepositoryImpl @Inject constructor(private val firebaseAuth: Firebase
         }
     }
 
-    override fun resetPassword(email: String) : Resource<String>? {
-        var result : Resource<String>? = null
-        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
-            result = if (task.isSuccessful) {
-                Resource.Success("Email wyslany pomyslnie")
+    override fun resetPassword(email: String, context: Context) {
+        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Toast.makeText(
+                    context,
+                    "Wysłano pomyślnie, pamiętaj by sprawdzić foler SPAM",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
-                Resource.Error(task.exception?.message.toString())
+                val message = it.exception?.message
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
             }
-
         }
-        return result
     }
+
 
     override fun logout() {
         firebaseAuth.signOut()

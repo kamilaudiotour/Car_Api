@@ -2,6 +2,8 @@ package com.example.carapi.di
 
 import com.example.carapi.api.CarsApi
 import com.example.carapi.api.MyInterceptor
+import com.example.carapi.repository.banners.BannersRepository
+import com.example.carapi.repository.banners.BannersRepositoryImpl
 import com.example.carapi.repository.car.CarRepository
 import com.example.carapi.repository.car.CarRepositoryImpl
 import com.example.carapi.repository.login.LoginRepository
@@ -62,6 +64,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository = LoginRepositoryImpl(firebaseAuth)
+
+    fun provideBannerRepository() : BannersRepository = BannersRepositoryImpl()
 
 
 }

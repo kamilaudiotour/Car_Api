@@ -22,4 +22,8 @@
     <string name="forgot_password_head_tv">Zapomniałeś hasła? \nUżyj e-maila do resetowania</string>
     <string name="dashboard_head_tv">My Dashboard</string>
     <string name="car_logo_content_description">car logo</string>
+    <string name="create_order_tv">Stwórz zamówienie</string>
+    <string name="dimensions_tv">Wymiary</string>
+    <string name="calendar_tv">Kalendarz</string>
+    <string name="calculator_tv">Kalkulator do folii</string>
 </resources>

@@ -65,6 +65,9 @@ object AppModule {
     @Singleton
     fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository = LoginRepositoryImpl(firebaseAuth)
 
+
+    @Provides
+    @Singleton
     fun provideBannerRepository() : BannersRepository = BannersRepositoryImpl()
 
 

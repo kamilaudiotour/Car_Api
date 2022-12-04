@@ -26,4 +26,7 @@
     <string name="dimensions_tv">Wymiary</string>
     <string name="calendar_tv">Kalendarz</string>
     <string name="calculator_tv">Kalkulator do folii</string>
+    <string name="old_price_tv"><strike>Old Price</strike></string>
+    <string name="new_price_tv">New Price</string>
+    <string name="item_title_tv">Item Title</string>
 </resources>

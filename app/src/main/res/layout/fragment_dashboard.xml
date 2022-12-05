@@ -48,13 +48,13 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="42dp" />
 
             <me.relex.circleindicator.CircleIndicator3
                 android:id="@+id/indicator"
                 android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                android:layout_height="25dp" />
 
             <GridLayout
                 android:layout_width="match_parent"

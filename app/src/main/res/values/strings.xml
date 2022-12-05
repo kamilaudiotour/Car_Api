@@ -29,4 +29,5 @@
     <string name="old_price_tv"><strike>Old Price</strike></string>
     <string name="new_price_tv">New Price</string>
     <string name="item_title_tv">Item Title</string>
+    <string name="discount_tv">-%d%%</string>
 </resources>

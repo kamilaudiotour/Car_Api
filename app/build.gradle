@@ -82,6 +82,9 @@ dependencies {
     //circle indicator
     implementation 'me.relex:circleindicator:2.1.6'
 
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
 
 // Allow references to generated code

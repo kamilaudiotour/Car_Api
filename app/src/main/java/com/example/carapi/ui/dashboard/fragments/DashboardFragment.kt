@@ -1,6 +1,6 @@
 package com.example.carapi.ui.dashboard.fragments
 
- import android.os.Bundle
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,12 +34,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             binding.indicator.setViewPager(viewPager)
         }
 
+
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-    }
-
 }

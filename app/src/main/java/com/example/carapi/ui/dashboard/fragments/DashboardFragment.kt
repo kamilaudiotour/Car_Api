@@ -13,6 +13,7 @@ import com.example.carapi.adapter.BannerListener
 import com.example.carapi.adapter.ViewPagerAdapter
 import com.example.carapi.databinding.FragmentDashboardBinding
 import com.example.carapi.ui.dashboard.BannersViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
@@ -28,6 +29,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
+        //set bottom nav bar visible
+        showBottomNavBar()
+
         //wait for about us card view to be clicked
         toAboutUsFragment()
 
@@ -36,6 +40,11 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         setupViewPager()
 
         return binding.root
+    }
+
+    private fun showBottomNavBar() {
+        val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar?.visibility = View.VISIBLE
     }
 
 

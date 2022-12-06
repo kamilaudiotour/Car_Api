@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.carapi.R
 import com.example.carapi.databinding.FragmentAboutUsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AboutUsFragment : Fragment(R.layout.fragment_about_us) {
 
@@ -33,9 +34,15 @@ class AboutUsFragment : Fragment(R.layout.fragment_about_us) {
         //Wait for click to start Email intent with specific email
         toEmail()
 
+        hideBottomNav()
 
 
         return binding.root
+    }
+
+    private fun hideBottomNav() {
+        val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar?.visibility = View.GONE
     }
 
 
@@ -66,14 +73,16 @@ class AboutUsFragment : Fragment(R.layout.fragment_about_us) {
 
     private fun emailIntent() {
         val receiver = arrayOf(binding.emailTv.text.toString())
-        val intent = Intent(Intent.ACTION_SEND)
+        val intent = Intent(Intent.ACTION_SENDTO)
         intent.apply {
-            setDataAndType(Uri.parse("mailto:"), "text/plain")
+            data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, receiver)
+
             startActivity(Intent.createChooser(intent, "Email"))
         }
     }
-    private fun toEmail(){
+
+    private fun toEmail() {
         binding.emailTv.setOnClickListener {
             emailIntent()
         }

@@ -54,4 +54,7 @@
     <string name="marker_iv">Marker icon</string>
     <string name="about_head_tv">Foliarz</string>
     <string name="car_logo_iv">Car logo icon</string>
+    <string name="dashboard_menu_item">Dashboard</string>
+    <string name="create_order_menu_item">Create Order</string>
+    <string name="profile_menu_item">Profile</string>
 </resources>

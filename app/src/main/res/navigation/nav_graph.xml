@@ -86,4 +86,12 @@
         android:id="@+id/aboutUsFragment"
         android:name="com.example.carapi.ui.about.AboutUsFragment"
         android:label="AboutUsFragment" />
+    <fragment
+        android:id="@+id/createOrderFragment"
+        android:name="com.example.carapi.ui.order.CreateOrderFragment"
+        android:label="CreateOrderFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.carapi.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

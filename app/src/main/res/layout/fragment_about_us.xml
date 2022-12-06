@@ -168,7 +168,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/call"
+                    android:id="@+id/phone_iv"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:clickable="true"

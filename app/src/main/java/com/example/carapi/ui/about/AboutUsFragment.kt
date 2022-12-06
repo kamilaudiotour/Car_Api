@@ -27,23 +27,62 @@ class AboutUsFragment : Fragment(R.layout.fragment_about_us) {
         // wait for button to be clicked and create map intent with
         toMaps()
 
+        //wait for click to start CALL DIAL with specific number
+        toCallDial()
+
+        //Wait for click to start Email intent with specific email
+        toEmail()
+
 
 
         return binding.root
     }
 
 
-    private fun toMaps(){
+    private fun toMaps() {
         binding.showMapBtn.setOnClickListener {
-
-            val gmmIntentUri= Uri.parse("geo:0,0?q=3+Polanka+Poznan")
+            val gmmIntentUri = Uri.parse("geo:0,0?q=3+Polanka+Poznan")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
     }
 
-    private fun setAnimationDrawables(){
+    private fun callIntent() {
+        val intent = Intent(Intent.ACTION_DIAL)
+        val number = binding.phoneTv.text.toString()
+        intent.data = Uri.parse("tel:$number")
+        startActivity(intent)
+    }
+
+    private fun toCallDial() {
+        binding.phoneTv.setOnClickListener {
+            callIntent()
+        }
+        binding.phoneIv.setOnClickListener {
+            callIntent()
+        }
+    }
+
+    private fun emailIntent() {
+        val receiver = arrayOf(binding.emailTv.text.toString())
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.apply {
+            setDataAndType(Uri.parse("mailto:"), "text/plain")
+            putExtra(Intent.EXTRA_EMAIL, receiver)
+            startActivity(Intent.createChooser(intent, "Email"))
+        }
+    }
+    private fun toEmail(){
+        binding.emailTv.setOnClickListener {
+            emailIntent()
+        }
+        binding.emailIv.setOnClickListener {
+            emailIntent()
+        }
+    }
+
+    private fun setAnimationDrawables() {
         val addressAnimDrawable = binding.addressLayout.background as AnimationDrawable
         addressAnimDrawable.apply {
             setEnterFadeDuration(30)

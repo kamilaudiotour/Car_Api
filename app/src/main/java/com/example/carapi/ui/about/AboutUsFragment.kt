@@ -35,10 +35,11 @@ class AboutUsFragment : Fragment(R.layout.fragment_about_us) {
 
     private fun toMaps(){
         binding.showMapBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("geo:52.40032030198386, 16.95574787153668")
-            val chooser = Intent.createChooser(intent, "Map")
-            startActivity(chooser)
+
+            val gmmIntentUri= Uri.parse("geo:0,0?q=3+Polanka+Poznan")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
         }
     }
 

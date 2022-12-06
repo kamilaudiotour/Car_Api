@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <gradient android:angle="60" android:endColor="@color/secondary_dark" android:startColor="@color/secondary" />
-            <corners android:radius="60dp" />
+            <corners android:radius="40dp" />
         </shape>
     </item>
 </selector>

@@ -30,4 +30,13 @@
     <string name="new_price_tv">New Price</string>
     <string name="item_title_tv">Item Title</string>
     <string name="discount_tv">-%d%%</string>
+    <string name="create_iv">Create order icon</string>
+    <string name="dimension_iv">Dimension icon</string>
+    <string name="calculator_iv">Calculator icon</string>
+    <string name="calendar_iv">Calculator icon</string>
+    <string name="project_iv">Project icon</string>
+    <string name="about_us_iv">About us icon</string>
+    <string name="projects_tv">Projekty</string>
+    <string name="about_us_tv">O nas</string>
+    <string name="banner_iv">Banner image</string>
 </resources>

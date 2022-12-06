@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
@@ -21,7 +22,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/dashboard_TextView"
@@ -33,7 +35,6 @@
                     android:text="@string/dashboard_head_tv"
                     android:textColor="@color/black"
                     android:textSize="25sp"
-
                     />
 
                 <ImageView
@@ -48,7 +49,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="264dp"
                 android:layout_marginHorizontal="42dp" />
 
             <me.relex.circleindicator.CircleIndicator3
@@ -88,7 +89,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_create_order" />
+                            android:src="@drawable/ic_create_order"
+                            android:contentDescription="@string/create_iv" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -128,7 +130,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_centimeter" />
+                            android:src="@drawable/ic_centimeter"
+                            android:contentDescription="@string/dimension_iv" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -168,7 +171,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_calendar" />
+                            android:src="@drawable/ic_calendar"
+                            android:contentDescription="@string/calendar_iv"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -208,7 +212,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_calculator" />
+                            android:src="@drawable/ic_calculator"
+                            android:contentDescription="@string/calculator_iv"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -249,14 +254,15 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_project" />
+                            android:src="@drawable/ic_project"
+                            android:contentDescription="@string/project_iv"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/lemon"
-                            android:text="Projekty"
+                            android:text="@string/projects_tv"
                             android:textColor="@color/secondary_dark"
                             android:textSize="15sp" />
 
@@ -289,14 +295,15 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_about_us" />
+                            android:src="@drawable/ic_about_us"
+                            android:contentDescription="@string/about_us_iv"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/lemon"
-                            android:text="O nas"
+                            android:text="@string/about_us_tv"
                             android:textColor="@color/secondary_dark"
                             android:textSize="15sp" />
 

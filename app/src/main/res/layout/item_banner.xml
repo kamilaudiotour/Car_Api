@@ -2,6 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="banner"
+            type="com.example.carapi.models.Banner" />
+        <variable
+            name="clickListener"
+            type="com.example.carapi.adapter.BannerListener" />
+    </data>
+
 
     <LinearLayout
         android:id="@+id/item_layout"
@@ -10,7 +19,8 @@
         android:background="@drawable/box_black_radius"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:onClick="@{() -> clickListener.onClick(banner)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/img_cv"
@@ -32,7 +42,8 @@
                     android:id="@+id/item_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@mipmap/ic_launcher_round"
+                    android:contentDescription="@string/banner_iv"/>
 
                 <TextView
                     android:id="@+id/discount_tv"
@@ -79,7 +90,7 @@
                 android:fontFamily="@font/lemon"
                 android:text="@string/new_price_tv"
                 android:textColor="@color/primary"
-                android:textSize="10sp"
+                android:textSize="12sp"
 
                 />
 
@@ -91,7 +102,7 @@
                 android:fontFamily="@font/lemon"
                 android:text="@string/old_price_tv"
                 android:textColor="@color/primary"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

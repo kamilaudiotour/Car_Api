@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_bannerFragment"
             app:destination="@id/bannerFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/bannerFragment"
@@ -79,4 +82,8 @@
             android:name="link"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.carapi.ui.about.AboutUsFragment"
+        android:label="AboutUsFragment" />
 </navigation>

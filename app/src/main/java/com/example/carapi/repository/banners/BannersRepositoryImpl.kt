@@ -22,7 +22,7 @@ class BannersRepositoryImpl : BannersRepository {
                 val oldPrice = banners.select(".price.row del").eq((i * 2)).text()
                 val newPrice = banners.select(".price.row em").eq((i * 2)).text()
                 val link = url + banners.select("a").eq(i).attr("href")
-                val discount  = banners.select("a span ").eq(i).text()
+                val discount = banners.select("a span ").eq(i).text()
                 Log.d("siemaada", discount.toString())
                 listData.add(Banner(i, text, imgUrl, newPrice, oldPrice, link))
 

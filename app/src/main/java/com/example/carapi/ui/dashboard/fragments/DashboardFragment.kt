@@ -28,7 +28,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
+        //wait for about us card view to be clicked
+        toAboutUsFragment()
 
+        //load list of banner promotions from folia-samochodowa.pl and attach it to list adapter + circle indicator setup
         loadData()
         setupViewPager()
 
@@ -51,6 +54,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         viewModel.banners.observe(viewLifecycleOwner) {
             adapter.submitList(it)
             binding.indicator.setViewPager(viewPager)
+        }
+    }
+
+    private fun toAboutUsFragment() {
+        binding.aboutCv.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_aboutUsFragment)
         }
     }
 }

@@ -16,8 +16,8 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class ViewPagerAdapter(private val clickListener : BannerListener) :
-    ListAdapter<Banner, ViewPagerViewHolder>(DiffCallback){
+class ViewPagerAdapter(private val clickListener: BannerListener) :
+    ListAdapter<Banner, ViewPagerViewHolder>(DiffCallback) {
 
 
     inner class ViewPagerViewHolder(private var binding: ItemBannerBinding) :
@@ -34,7 +34,7 @@ class ViewPagerAdapter(private val clickListener : BannerListener) :
                 oldPriceTv.text = banner.oldPrice
                 oldPriceTv.paintFlags =
                     oldPriceTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-               newPriceTv.text = banner.newPrice
+                newPriceTv.text = banner.newPrice
                 itemTitleTv.text = banner.text
                 val numberFormat = NumberFormat.getNumberInstance(Locale.GERMAN) as DecimalFormat
                 val oldPrice = numberFormat.parse(banner.oldPrice)?.toDouble()
@@ -62,7 +62,7 @@ class ViewPagerAdapter(private val clickListener : BannerListener) :
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         val currentBanner = getItem(position)
-        holder.bind(currentBanner,clickListener)
+        holder.bind(currentBanner, clickListener)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Banner>() {
@@ -77,8 +77,8 @@ class ViewPagerAdapter(private val clickListener : BannerListener) :
     }
 
 
-
 }
+
 class BannerListener(val clickListener: (banner: Banner) -> Unit) {
     fun onClick(banner: Banner) = clickListener(banner)
 }

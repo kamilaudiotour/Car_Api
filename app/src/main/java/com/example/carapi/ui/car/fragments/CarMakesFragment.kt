@@ -34,7 +34,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
     ): View {
         binding = FragmentCarMakesBinding.inflate(inflater, container, false)
 
-        binding.logoutBtn.setOnClickListener{
+        binding.logoutBtn.setOnClickListener {
             loginViewModel.logout()
             findNavController().navigate(R.id.action_carFragment_to_loginFragment)
         }

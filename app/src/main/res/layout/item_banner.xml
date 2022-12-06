@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="banner"
             type="com.example.carapi.models.Banner" />
+
         <variable
             name="clickListener"
             type="com.example.carapi.adapter.BannerListener" />
@@ -18,9 +20,9 @@
         android:layout_height="match_parent"
         android:background="@drawable/box_black_radius"
         android:gravity="center"
+        android:onClick="@{() -> clickListener.onClick(banner)}"
         android:orientation="vertical"
-        android:padding="8dp"
-        android:onClick="@{() -> clickListener.onClick(banner)}">
+        android:padding="8dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/img_cv"
@@ -42,8 +44,8 @@
                     android:id="@+id/item_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher_round"
-                    android:contentDescription="@string/banner_iv"/>
+                    android:contentDescription="@string/banner_iv"
+                    android:src="@mipmap/ic_launcher_round" />
 
                 <TextView
                     android:id="@+id/discount_tv"
@@ -53,7 +55,7 @@
                     android:layout_alignEnd="@id/item_img"
                     android:layout_gravity="center"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/box_oragne_radius"
+                    android:background="@drawable/box_orange_radius"
                     android:padding="6dp"
                     android:text="@string/discount_tv"
                     android:textColor="@color/secondary"

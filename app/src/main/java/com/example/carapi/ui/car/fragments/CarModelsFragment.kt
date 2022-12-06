@@ -24,7 +24,6 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
     private val viewModel by activityViewModels<CarViewModel>()
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,11 +59,11 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 
 
     private fun setupRecyclerView() {
@@ -77,7 +76,6 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }
-
 
 
 }

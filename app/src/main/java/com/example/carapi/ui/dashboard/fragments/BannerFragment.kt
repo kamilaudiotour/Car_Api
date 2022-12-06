@@ -12,11 +12,9 @@ import com.example.carapi.databinding.FragmentBannerBinding
 
 class BannerFragment : Fragment(R.layout.fragment_banner) {
 
-    private lateinit var binding : FragmentBannerBinding
+    private lateinit var binding: FragmentBannerBinding
 
     val args: BannerFragmentArgs by navArgs()
-
-
 
 
     override fun onCreateView(
@@ -24,7 +22,7 @@ class BannerFragment : Fragment(R.layout.fragment_banner) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBannerBinding.inflate(inflater,container,false)
+        binding = FragmentBannerBinding.inflate(inflater, container, false)
 
         val url = args.link
         binding.bannerWv.apply {

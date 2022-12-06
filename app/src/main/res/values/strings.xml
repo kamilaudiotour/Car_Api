@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Car Api</string>
     <string name="menu_search">Search</string>
     <string name="choose_car_tv">Wybierz model swojego samochodu</string>
@@ -39,4 +39,19 @@
     <string name="projects_tv">Projekty</string>
     <string name="about_us_tv">O nas</string>
     <string name="banner_iv">Banner image</string>
+    <string name="email_tv">phillipekcoutinho@gmail.com</string>
+    <string name="email_iv">Email icon</string>
+    <string name="phone_tv">111111111</string>
+    <string name="phone_iv">Phone icon</string>
+    <string name="contact_tv">Kontakt</string>
+    <string name="contact_iv">Contact icon</string>
+    <string name="about_description_tv">Zajmujemy się profesjonalną zmianą koloru aut i usługami detailingowymi. Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum. Zapraszmy do kontaktu</string>
+    <string name="message_iv">Message icon</string>
+    <string name="about_us_head_tv">O nas</string>
+    <string name="show_map_btn">Pokaż mapę</string>
+    <string name="address_tv">Polanka 3, 60–995 Poznań</string>
+    <string name="address_head_tv" tools:ignore="Typos">Adres</string>
+    <string name="marker_iv">Marker icon</string>
+    <string name="about_head_tv">Foliarz</string>
+    <string name="car_logo_iv">Car logo icon</string>
 </resources>

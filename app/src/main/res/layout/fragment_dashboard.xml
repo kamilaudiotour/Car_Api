@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,8 +34,7 @@
                     android:gravity="center"
                     android:text="@string/dashboard_head_tv"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
-                    />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:id="@+id/logo_ImageView"
@@ -76,7 +75,10 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -89,8 +91,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_create_order"
-                            android:contentDescription="@string/create_iv" />
+                            android:contentDescription="@string/create_iv"
+                            android:src="@drawable/ic_create_order" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -101,7 +103,6 @@
                             android:textAlignment="center"
                             android:textColor="@color/secondary_dark"
                             android:textSize="15sp" />
-
 
                     </LinearLayout>
 
@@ -117,7 +118,10 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,8 +134,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_centimeter"
-                            android:contentDescription="@string/dimension_iv" />
+                            android:contentDescription="@string/dimension_iv"
+                            android:src="@drawable/ic_centimeter" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -142,9 +146,7 @@
                             android:textColor="@color/secondary_dark"
                             android:textSize="15sp" />
 
-
                     </LinearLayout>
-
 
                 </androidx.cardview.widget.CardView>
 
@@ -158,7 +160,10 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -171,8 +176,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_calendar"
-                            android:contentDescription="@string/calendar_iv"/>
+                            android:contentDescription="@string/calendar_iv"
+                            android:src="@drawable/ic_calendar" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -186,7 +191,6 @@
 
                     </LinearLayout>
 
-
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -199,7 +203,10 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -212,8 +219,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_calculator"
-                            android:contentDescription="@string/calculator_iv"/>
+                            android:contentDescription="@string/calculator_iv"
+                            android:src="@drawable/ic_calculator" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -225,9 +232,7 @@
                             android:textColor="@color/secondary_dark"
                             android:textSize="15sp" />
 
-
                     </LinearLayout>
-
 
                 </androidx.cardview.widget.CardView>
 
@@ -241,7 +246,10 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -254,8 +262,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_project"
-                            android:contentDescription="@string/project_iv"/>
+                            android:contentDescription="@string/project_iv"
+                            android:src="@drawable/ic_project" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -282,7 +290,11 @@
                     android:layout_margin="6dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp">
+                    app:cardElevation="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -295,8 +307,8 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_about_us"
-                            android:contentDescription="@string/about_us_iv"/>
+                            android:contentDescription="@string/about_us_iv"
+                            android:src="@drawable/ic_about_us" />
 
                         <TextView
                             android:layout_width="wrap_content"

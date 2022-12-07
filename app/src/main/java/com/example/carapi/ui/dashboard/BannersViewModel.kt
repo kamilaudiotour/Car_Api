@@ -21,7 +21,7 @@ class BannersViewModel @Inject constructor(private val bannersRepository: Banner
         fetchData()
     }
 
-    fun fetchData() {
+    private fun fetchData() {
         viewModelScope.launch(IO) {
             banners.postValue(bannersRepository.getBanners())
         }

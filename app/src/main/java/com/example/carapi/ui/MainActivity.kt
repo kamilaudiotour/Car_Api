@@ -42,5 +42,4 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navHostFragment.findNavController())
 
     }
-
 }

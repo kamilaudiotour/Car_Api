@@ -12,6 +12,7 @@ import com.example.carapi.R
 import com.example.carapi.databinding.FragmentLoginBinding
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.util.Resource
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -31,6 +32,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
 
 
+        hideBottomNav()
 
         binding.apply {
             loginBtn.setOnClickListener {
@@ -51,7 +53,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             when (it) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.INVISIBLE
-                    findNavController().navigate(R.id.action_loginFragment_to_carFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
                 }
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -67,6 +69,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
 
         return binding.root
+    }
+
+    private fun hideBottomNav() {
+        val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar?.visibility = View.GONE
     }
 
 

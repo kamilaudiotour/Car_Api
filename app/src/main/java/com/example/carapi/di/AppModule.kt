@@ -8,8 +8,13 @@ import com.example.carapi.repository.car.CarRepository
 import com.example.carapi.repository.car.CarRepositoryImpl
 import com.example.carapi.repository.login.LoginRepository
 import com.example.carapi.repository.login.LoginRepositoryImpl
+import com.example.carapi.repository.profile.ProfileRepository
+import com.example.carapi.repository.profile.ProfileRepositoryImpl
 import com.example.carapi.util.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -63,12 +68,20 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun providesFirebaseFirestore(): FirebaseFirestore = Firebase.firestore
+
+    @Provides
+    @Singleton
     fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository = LoginRepositoryImpl(firebaseAuth)
 
 
     @Provides
     @Singleton
     fun provideBannerRepository() : BannersRepository = BannersRepositoryImpl()
+
+    @Provides
+    @Singleton
+    fun providesProfileRepository(firebaseFirestore : FirebaseFirestore): ProfileRepository = ProfileRepositoryImpl(firebaseFirestore)
 
 
 }

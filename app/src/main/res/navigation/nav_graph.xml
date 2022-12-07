@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/carFragment"
@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_carFragment_to_carModelsFragment"
             app:destination="@id/carModelsFragment" />
-        <action
-            android:id="@+id/action_carFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/carModelsFragment"
@@ -26,9 +23,6 @@
         android:name="com.example.carapi.ui.login.fragments.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment_to_carFragment"
-            app:destination="@id/carFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
             app:enterAnim="@android:anim/slide_in_left"
@@ -38,20 +32,23 @@
         <action
             android:id="@+id/action_loginFragment_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.carapi.ui.login.fragments.RegisterFragment"
         android:label="RegisterFragment" >
         <action
-            android:id="@+id/action_registerFragment_to_carFragment"
-            app:destination="@id/carFragment" />
-        <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_registerFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
@@ -92,6 +89,10 @@
         android:label="CreateOrderFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.carapi.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:name="com.example.carapi.ui.profile.fragments.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_carFragment"
+            app:destination="@id/carFragment" />
+    </fragment>
 </navigation>

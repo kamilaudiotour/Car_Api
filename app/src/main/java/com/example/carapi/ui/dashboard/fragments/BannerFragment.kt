@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.carapi.R
 import com.example.carapi.databinding.FragmentBannerBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BannerFragment : Fragment(R.layout.fragment_banner) {
 
@@ -24,6 +25,8 @@ class BannerFragment : Fragment(R.layout.fragment_banner) {
     ): View {
         binding = FragmentBannerBinding.inflate(inflater, container, false)
 
+        hideBottomNav()
+
         val url = args.link
         binding.bannerWv.apply {
             webViewClient = WebViewClient()
@@ -31,5 +34,11 @@ class BannerFragment : Fragment(R.layout.fragment_banner) {
         }
 
         return binding.root
+    }
+
+
+    private fun hideBottomNav() {
+        val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar?.visibility = View.GONE
     }
 }

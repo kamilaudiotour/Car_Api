@@ -43,7 +43,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             when (it) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_registerFragment_to_carFragment)
+                    findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
                 }
                 is Resource.Error -> {
                     binding.progressBar.visibility = View.GONE

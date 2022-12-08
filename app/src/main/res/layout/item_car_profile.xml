@@ -2,6 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="clickListener"
+            type="com.example.carapi.adapter.CarProfileClickListener" />
+
+        <variable
+            name="car"
+            type="com.example.carapi.models.Car" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +58,7 @@
                 android:layout_margin="12dp"
                 android:fontFamily="@font/tommy_bold"
                 android:text="@string/model"
+                android:textAlignment="center"
                 android:textColor="@color/secondary"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/make_tv"
@@ -69,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="@string/type"
+                android:textAlignment="center"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/year_tv"

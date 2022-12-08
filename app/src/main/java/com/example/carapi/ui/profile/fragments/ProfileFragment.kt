@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carapi.R
+import com.example.carapi.adapter.CarProfileClickListener
+import com.example.carapi.adapter.CarProfileListAdapter
 import com.example.carapi.databinding.FragmentProfileBinding
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.ui.profile.ProfileViewModel
@@ -16,6 +19,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var binding: FragmentProfileBinding
     private val loginViewModel: LoginViewModel by activityViewModels()
     private val profileViewModel: ProfileViewModel by activityViewModels()
+    private lateinit var carProfileAdapter : CarProfileListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +36,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         profileViewModel.readCarsData("user1")
 
-
-
+        loadData()
+        setupRv()
 
         return binding.root
+    }
+
+    fun loadData(){
+        profileViewModel.profileCars.observe(viewLifecycleOwner) {
+            profileViewModel.readCarsData("user1")
+            carProfileAdapter.submitList(it)
+        }
+    }
+
+    fun setupRv(){
+        carProfileAdapter = CarProfileListAdapter(CarProfileClickListener {
+
+        })
+        binding.profileCarsRv.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = carProfileAdapter
+        }
     }
 
 

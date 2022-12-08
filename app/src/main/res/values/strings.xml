@@ -63,4 +63,5 @@
     <string name="add_car_btn" tools:ignore="Typos">Dodaj nowe auto</string>
     <string name="car_iv">Car icon</string>
     <string name="your_cars_tv">Twoje samochody</string>
+    <string name="logout_tv">Wyloguj się</string>
 </resources>

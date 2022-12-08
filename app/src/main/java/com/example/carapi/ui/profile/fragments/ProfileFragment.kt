@@ -33,6 +33,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         profileViewModel.readCarsData("user1")
 
 
+
+
         return binding.root
     }
 

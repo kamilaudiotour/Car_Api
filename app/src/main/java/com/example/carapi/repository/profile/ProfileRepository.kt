@@ -9,5 +9,5 @@ interface ProfileRepository {
         car: Car
     )
 
-    fun readCarsData(userId: String) : List<Car>
+    suspend fun readCarsData(userId: String) : List<Car>
 }

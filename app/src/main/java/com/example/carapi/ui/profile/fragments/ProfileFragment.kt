@@ -35,6 +35,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         //show bottom nav bar if there was a fragment that hided it before
         showBottomNavBar()
 
+
+
         binding.apply {
 
             logoutBtn.setOnClickListener {
@@ -50,28 +52,32 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileEmailTv.text = loginViewModel.currentUser?.email.toString()
         }
 
-        // TODO replace function value with real user id
-        profileViewModel.readCarsData("user1")
+        val userId = loginViewModel.currentUser?.uid.toString()
 
+
+        // initial load of user's car database
+        profileViewModel.readCarsData(userId)
 
         // check if there is an argument from car make and models fragment and pass it to firebase
-        checkForCarToAdd()
+        checkForCarToAdd(userId)
 
-        loadData()
+
+        // load user's cars database
+        loadData(userId)
         setupRv()
 
         return binding.root
     }
 
-    private fun checkForCarToAdd() {
+    private fun checkForCarToAdd(userId: String) {
         if (args.car != null) {
-            profileViewModel.saveCar("user1", args.car!!)
+            profileViewModel.saveCar(userId, args.car!!)
         }
     }
 
-    private fun loadData() {
+    private fun loadData(userId: String) {
         profileViewModel.profileCars.observe(viewLifecycleOwner) {
-            profileViewModel.readCarsData("user1")
+            profileViewModel.readCarsData(userId)
             carProfileAdapter.submitList(it)
         }
     }

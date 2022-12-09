@@ -9,13 +9,15 @@ import com.example.carapi.adapter.CarPagedAdapter.MyViewHolder
 import com.example.carapi.databinding.ItemCarModelBinding
 import com.example.carapi.models.Car
 
-class CarPagedAdapter() :
+class CarPagedAdapter(private val clickListener: CarModelClickListener) :
     PagingDataAdapter<Car, MyViewHolder>(diffCallback) {
 
     inner class MyViewHolder(private val binding: ItemCarModelBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(car: Car?) {
+        fun bind(car: Car?, clickListener: CarModelClickListener) {
+            binding.clickListener = clickListener
+            binding.car = car
             binding.modelTv.text = car?.model
             binding.typeTv.text = car?.type
             binding.yearTv.text = car?.year
@@ -37,7 +39,7 @@ class CarPagedAdapter() :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val car = getItem(position)
         if (car != null) {
-            holder.bind(car)
+            holder.bind(car,clickListener)
         }
     }
 
@@ -51,4 +53,8 @@ class CarPagedAdapter() :
     }
 
 }
+class CarModelClickListener(val clickListener: (car: Car) -> Unit) {
+    fun onClick(car: Car) = clickListener(car)
+}
+
 

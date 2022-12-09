@@ -11,7 +11,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.carapi.R
+import com.example.carapi.adapter.CarModelClickListener
 import com.example.carapi.adapter.CarPagedAdapter
 import com.example.carapi.databinding.FragmentCarModelsBinding
 import com.example.carapi.ui.car.CarViewModel
@@ -30,7 +32,7 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
         _binding = FragmentCarModelsBinding.bind(view)
         setupRecyclerView()
 
-// Search menu functionality
+        // Search menu functionality
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -67,7 +69,11 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
 
 
     private fun setupRecyclerView() {
-        val adapter = CarPagedAdapter()
+        val adapter = CarPagedAdapter(CarModelClickListener { car ->
+            val bundle = Bundle().apply {
+                putParcelable("car", car)          }
+            findNavController().navigate(R.id.action_carModelsFragment_to_profileFragment, bundle)
+        })
         binding.apply {
             carRv.setHasFixedSize(true)
             carRv.adapter = adapter

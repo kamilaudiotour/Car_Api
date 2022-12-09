@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carapi.R
 import com.example.carapi.adapter.CarProfileClickListener
 import com.example.carapi.adapter.CarProfileListAdapter
 import com.example.carapi.databinding.FragmentProfileBinding
 import com.example.carapi.models.Car
+import com.example.carapi.ui.dashboard.fragments.BannerFragmentArgs
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.ui.profile.ProfileViewModel
 
@@ -22,6 +24,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val loginViewModel: LoginViewModel by activityViewModels()
     private val profileViewModel: ProfileViewModel by activityViewModels()
     private lateinit var carProfileAdapter : CarProfileListAdapter
+    val args: ProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +34,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
 
+        val car = args.car
+        if(car != null) {
+            profileViewModel.saveCar("user1", car)
+        }
         binding.logoutBtn.setOnClickListener {
             loginViewModel.logout()
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
         binding.addCarBtn.setOnClickListener {
-            profileViewModel.saveCar("user1", Car(0, "przyklad", "przyklad", "przyklad", "przyklad"))
+            //profileViewModel.saveCar("user1", Car(0, "przyklad", "przyklad", "przyklad", "przyklad"))
         }
 
         binding.profileNameTv.text = loginViewModel.currentUser?.displayName

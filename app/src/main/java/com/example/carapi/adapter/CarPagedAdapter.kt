@@ -21,6 +21,7 @@ class CarPagedAdapter(private val clickListener: CarModelClickListener) :
             binding.modelTv.text = car?.model
             binding.typeTv.text = car?.type
             binding.yearTv.text = car?.year
+            binding.makeTv.text = car?.make
         }
     }
 

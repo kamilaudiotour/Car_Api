@@ -106,6 +106,7 @@
         <argument
             android:name="car"
             app:argType="com.example.carapi.models.Car"
-            app:nullable="true" />
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

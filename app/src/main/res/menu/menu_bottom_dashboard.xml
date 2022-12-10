@@ -3,12 +3,13 @@
 
     <item android:id="@+id/dashboardFragment"
         android:title="@string/dashboard_menu_item"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home_white"
+        />
     <item android:id="@+id/createOrderFragment"
         android:title="@string/create_order_menu_item"
-        android:icon="@drawable/ic_create_order"/>
+        android:icon="@drawable/ic_create_order_white"/>
     <item android:id="@+id/profileFragment"
         android:title="@string/profile_menu_item"
-        android:icon="@drawable/ic_about_us"/>
+        android:icon="@drawable/ic_profile_white"/>
 
 </menu>

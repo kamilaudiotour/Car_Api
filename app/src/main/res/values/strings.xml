@@ -64,4 +64,6 @@
     <string name="car_iv">Car icon</string>
     <string name="your_cars_tv">Twoje samochody</string>
     <string name="logout_tv">Wyloguj się</string>
+    <string name="car_delete_iv">Delete car</string>
+    <string name="no_cars_tv">Brak samochodów na twojej liście!</string>
 </resources>

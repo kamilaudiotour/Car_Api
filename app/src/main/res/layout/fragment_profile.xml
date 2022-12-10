@@ -58,12 +58,19 @@
                     android:text="@string/your_cars_tv"
                     android:textColor="@color/primary"
                     android:textSize="16sp" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/no_cars_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="@string/no_cars_tv"
+                    android:textSize="15sp"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/profile_cars_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    tools:itemCount="2"
+                    tools:itemCount="0"
                     android:paddingVertical="20dp"
                     android:layout_gravity="center"
                     />

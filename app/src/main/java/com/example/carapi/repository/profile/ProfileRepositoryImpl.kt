@@ -11,7 +11,6 @@ class ProfileRepositoryImpl @Inject constructor(private val db: FirebaseFirestor
     ProfileRepository {
 
 
-
     init {
         db.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
     }
@@ -21,8 +20,8 @@ class ProfileRepositoryImpl @Inject constructor(private val db: FirebaseFirestor
         car: Car
     ) {
 
-
-        db.collection("users data").document(userId).collection("cars").document().set(car)
+        db.collection("users data").document(userId).collection("cars").document(car.id.toString())
+            .set(car)
             .addOnSuccessListener { Log.d("firebase save", "DocumentSnapshot succesfully written") }
             .addOnFailureListener { e -> Log.w("firebase save", "Error writing document", e) }
 
@@ -42,5 +41,10 @@ class ProfileRepositoryImpl @Inject constructor(private val db: FirebaseFirestor
         }
 
         return carList
+    }
+
+    override fun deleteCar(userId: String, car: Car) {
+        db.collection("users data").document(userId).collection("cars").document(car.id.toString())
+            .delete()
     }
 }

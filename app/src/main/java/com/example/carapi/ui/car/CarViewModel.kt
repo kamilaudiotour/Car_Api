@@ -25,7 +25,7 @@ class CarViewModel @Inject constructor(
     private val carMake = MutableLiveData("BMW")
 
     //gets updated when user choose his/her car make and model, type and year in CarModelFragment, then used to create Car object which is saved in database as user's car in list of his cars
-    private val selectedCar = MutableLiveData(Car())
+     val selectedCar = MutableLiveData<Car?>(null)
 
     // also query for car models filter, gets updated when user start typing model
     private val modelQuery = MutableLiveData("")
@@ -76,8 +76,12 @@ class CarViewModel @Inject constructor(
     fun onCarMakeClicked(make: String) {
         carMake.value = make
     }
-    fun onCarModelTypeYearClicked(car: Car) {
+    fun onCarModelYearTypeClicked(car : Car) {
         selectedCar.value = car
+    }
+
+    fun afterCarAdded() {
+        selectedCar.value = null
     }
 
 

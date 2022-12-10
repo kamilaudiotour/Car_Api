@@ -12,7 +12,6 @@ import com.example.carapi.R
 import com.example.carapi.adapter.BannerListener
 import com.example.carapi.adapter.ViewPagerAdapter
 import com.example.carapi.databinding.FragmentDashboardBinding
-import com.example.carapi.ui.MainActivity
 import com.example.carapi.ui.dashboard.BannersViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carapi.R
 import com.example.carapi.adapter.CarProfileClickListener
 import com.example.carapi.adapter.CarProfileListAdapter
 import com.example.carapi.databinding.FragmentProfileBinding
+import com.example.carapi.ui.car.CarViewModel
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.ui.profile.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,8 +21,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var binding: FragmentProfileBinding
     private val loginViewModel: LoginViewModel by activityViewModels()
     private val profileViewModel: ProfileViewModel by activityViewModels()
+    private val carViewModel: CarViewModel by activityViewModels()
     private lateinit var carProfileAdapter: CarProfileListAdapter
-    val args: ProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +34,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         //show bottom nav bar if there was a fragment that hided it before
         showBottomNavBar()
+
 
 
 
@@ -51,40 +52,52 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileNameTv.text = loginViewModel.currentUser?.displayName
             profileEmailTv.text = loginViewModel.currentUser?.email.toString()
         }
-
+        // get currently logged in user id
         val userId = loginViewModel.currentUser?.uid.toString()
 
+        // load user's cars database
+        loadData(userId)
+        setupRv(userId)
+
+        checkForCarToAdd(userId)
 
         // initial load of user's car database
         profileViewModel.readCarsData(userId)
 
         // check if there is an argument from car make and models fragment and pass it to firebase
-        checkForCarToAdd(userId)
+        // checkForCarToAdd(userId)
 
-
-        // load user's cars database
-        loadData(userId)
-        setupRv()
 
         return binding.root
     }
 
     private fun checkForCarToAdd(userId: String) {
-        if (args.car != null) {
-            profileViewModel.saveCar(userId, args.car!!)
+        val car = carViewModel.selectedCar.value
+        if (car != null) {
+            profileViewModel.saveCar(userId, car)
+            carViewModel.afterCarAdded()
         }
     }
 
     private fun loadData(userId: String) {
         profileViewModel.profileCars.observe(viewLifecycleOwner) {
-            profileViewModel.readCarsData(userId)
-            carProfileAdapter.submitList(it)
+            if (it.isEmpty()) {
+                binding.noCarsTv.visibility = View.VISIBLE
+                binding.profileCarsRv.visibility = View.GONE
+            } else {
+                binding.noCarsTv.visibility = View.GONE
+                binding.profileCarsRv.visibility = View.VISIBLE
+                profileViewModel.readCarsData(userId)
+                carProfileAdapter.submitList(it)
+            }
+
+
         }
     }
 
-    private fun setupRv() {
+    private fun setupRv(userId: String) {
         carProfileAdapter = CarProfileListAdapter(CarProfileClickListener {
-
+            profileViewModel.deleteCar(userId, it)
         })
         binding.profileCarsRv.apply {
             layoutManager =

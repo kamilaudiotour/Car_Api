@@ -70,9 +70,8 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
 
     private fun setupRecyclerView() {
         val adapter = CarPagedAdapter(CarModelClickListener { car ->
-            val bundle = Bundle().apply {
-                putParcelable("car", car)          }
-            findNavController().navigate(R.id.action_carModelsFragment_to_profileFragment, bundle)
+            viewModel.onCarModelYearTypeClicked(car)
+            findNavController().navigate(R.id.action_carModelsFragment_to_profileFragment)
         })
         binding.apply {
             carRv.setHasFixedSize(true)

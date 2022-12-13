@@ -8,16 +8,21 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.example.carapi.R
 import com.example.carapi.adapter.CarModelClickListener
 import com.example.carapi.adapter.CarPagedAdapter
 import com.example.carapi.databinding.FragmentCarModelsBinding
 import com.example.carapi.ui.car.CarViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
@@ -73,12 +78,23 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
             viewModel.onCarModelYearTypeClicked(car)
             findNavController().navigate(R.id.action_carModelsFragment_to_profileFragment)
         })
+
+        handleLoadingState(adapter)
+
         binding.apply {
             carRv.setHasFixedSize(true)
             carRv.adapter = adapter
         }
         viewModel.listData.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+    }
+
+    private fun handleLoadingState(adapter: CarPagedAdapter){
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                binding.modelsPb.isVisible = loadStates.refresh is LoadState.Loading
+            }
         }
     }
 

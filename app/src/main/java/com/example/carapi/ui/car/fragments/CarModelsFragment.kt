@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
     private var _binding: FragmentCarModelsBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapter : CarPagedAdapter
     private val viewModel by activityViewModels<CarViewModel>()
 
 
@@ -74,7 +76,7 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
 
 
     private fun setupRecyclerView() {
-        val adapter = CarPagedAdapter(CarModelClickListener { car ->
+        adapter = CarPagedAdapter(CarModelClickListener { car ->
             viewModel.onCarModelYearTypeClicked(car)
             findNavController().navigate(R.id.action_carModelsFragment_to_profileFragment)
         })
@@ -94,6 +96,10 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
                 binding.modelsPb.isVisible = loadStates.refresh is LoadState.Loading
+                binding.carRv.isVisible = loadStates.refresh is LoadState.NotLoading
+                if(loadStates.refresh is LoadState.Error){
+                    Toast.makeText(requireContext(), " EROR", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }

@@ -14,8 +14,8 @@ import com.example.carapi.adapter.CarMakeClickListener
 import com.example.carapi.adapter.CarMakesListAdapter
 import com.example.carapi.databinding.FragmentCarMakesBinding
 import com.example.carapi.ui.car.CarViewModel
-import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.util.Resource
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +24,6 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
     private lateinit var binding: FragmentCarMakesBinding
     private lateinit var carMakesAdapter: CarMakesListAdapter
     private val viewModel by activityViewModels<CarViewModel>()
-    private val loginViewModel by activityViewModels<LoginViewModel>()
 
     private val TAG = "CAR MODELS FRAGMENT"
 
@@ -34,10 +33,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
     ): View {
         binding = FragmentCarMakesBinding.inflate(inflater, container, false)
 
-        binding.logoutBtn.setOnClickListener {
-            loginViewModel.logout()
-            //findNavController().navigate(R.id.action_carFragment_to_loginFragment)
-        }
+        hideBottomNav()
 
         loadingCarMakesData()
         setupCarMakesRecyclerView()
@@ -49,6 +45,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
         viewModel.carMakes.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
+                    readyComponents()
                     response.data?.let { carMakesResponse ->
                         carMakesAdapter.submitList(carMakesResponse.sorted())
                     }
@@ -59,7 +56,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
                     }
                 }
                 is Resource.Loading -> {
-
+                    loadingComponents()
                 }
             }
         }
@@ -77,6 +74,25 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
             adapter = carMakesAdapter
             setHasFixedSize(true)
         }
+    }
+
+    private fun loadingComponents() {
+        binding.apply {
+            makesPb.visibility = View.VISIBLE
+            carRv.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun readyComponents() {
+        binding.apply {
+            makesPb.visibility = View.INVISIBLE
+            carRv.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideBottomNav() {
+        val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar?.visibility = View.GONE
     }
 
 

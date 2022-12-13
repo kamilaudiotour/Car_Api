@@ -10,11 +10,15 @@ import com.example.carapi.repository.login.LoginRepository
 import com.example.carapi.repository.login.LoginRepositoryImpl
 import com.example.carapi.repository.profile.ProfileRepository
 import com.example.carapi.repository.profile.ProfileRepositoryImpl
+import com.example.carapi.repository.project.ProjectRepository
+import com.example.carapi.repository.project.ProjectRepositoryImpl
 import com.example.carapi.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,11 +46,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesLogging() : HttpLoggingInterceptor = HttpLoggingInterceptor()
+    fun providesLogging(): HttpLoggingInterceptor = HttpLoggingInterceptor()
 
     @Provides
     @Singleton
-    fun providesInterceptor() : MyInterceptor = MyInterceptor()
+    fun providesInterceptor(): MyInterceptor = MyInterceptor()
 
     @Provides
     @Singleton
@@ -64,7 +68,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesFirebaseAuth() : FirebaseAuth = FirebaseAuth.getInstance()
+    fun providesFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
     @Provides
     @Singleton
@@ -72,16 +76,30 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository = LoginRepositoryImpl(firebaseAuth)
+    fun providesFirebaseStorage(): FirebaseStorage = Firebase.storage
+
+    @Provides
+    @Singleton
+    fun provideLoginRepository(firebaseAuth: FirebaseAuth): LoginRepository =
+        LoginRepositoryImpl(firebaseAuth)
 
 
     @Provides
     @Singleton
-    fun provideBannerRepository() : BannersRepository = BannersRepositoryImpl()
+    fun provideBannerRepository(): BannersRepository = BannersRepositoryImpl()
 
     @Provides
     @Singleton
-    fun providesProfileRepository(firebaseFirestore : FirebaseFirestore): ProfileRepository = ProfileRepositoryImpl(firebaseFirestore)
+    fun providesProfileRepository(firebaseFirestore: FirebaseFirestore): ProfileRepository =
+        ProfileRepositoryImpl(firebaseFirestore)
+
+
+    @Provides
+    @Singleton
+    fun providesProjectRepository(
+        db: FirebaseFirestore,
+        storage: FirebaseStorage
+    ): ProjectRepository = ProjectRepositoryImpl(db, storage)
 
 
 }

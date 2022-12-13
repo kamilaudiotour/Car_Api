@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
     </fragment>
     <fragment
         android:id="@+id/bannerFragment"
@@ -109,4 +112,8 @@
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="com.example.carapi.ui.project.fragments.ProjectFragment"
+        android:label="ProjectFragment" />
 </navigation>

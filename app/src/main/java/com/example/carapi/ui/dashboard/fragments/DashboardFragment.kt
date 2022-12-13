@@ -35,11 +35,20 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         //wait for about us card view to be clicked
         toAboutUsFragment()
 
+        // wait for project card view to be clicked
+        toProjectFragment()
+
         //load list of banner promotions from folia-samochodowa.pl and attach it to list adapter + circle indicator setup
         loadData()
         setupViewPager()
 
         return binding.root
+    }
+
+    private fun toProjectFragment() {
+        binding.projectsCv.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_projectFragment)
+        }
     }
 
     private fun showBottomNavBar() {

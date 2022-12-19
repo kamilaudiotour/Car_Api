@@ -1,6 +1,7 @@
 package com.example.carapi.adapter
 
 import android.graphics.Paint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -30,6 +31,7 @@ class ViewPagerAdapter(private val clickListener: BannerListener) :
 
 
             binding.apply {
+                Log.d("banner view", banner.img)
                 Picasso.get().load(banner.img).resize(140, 140).into(itemImg)
                 oldPriceTv.text = banner.oldPrice
                 oldPriceTv.paintFlags =

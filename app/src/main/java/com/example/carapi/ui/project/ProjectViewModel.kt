@@ -20,6 +20,9 @@ class ProjectViewModel @Inject constructor(private val projectRepository: Projec
     val projects: LiveData<List<Project>>
         get() = _projects
 
+    init {
+        getProjects()
+    }
 
     fun addProject(uri: Uri, project: Project) {
         projectRepository.addProject(uri, project)

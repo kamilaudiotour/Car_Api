@@ -20,18 +20,22 @@ class ProjectRepositoryImpl @Inject constructor(
 
     override fun addProject(uri: Uri, project: Project) {
         val imagesRef = storage.reference.child("images/${uri.lastPathSegment}")
-        imagesRef.putFile(uri).addOnCompleteListener {
-            Log.d("firebase image", "Succesfully uploaded")
-            imagesRef.downloadUrl.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result.toString()
-                    project.photoUrl = downloadUri
-                    db.collection("projects").add(project)
-                }
+        val uploadTask = imagesRef.putFile(uri)
+        val urlTask = uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                Log.d("url task error", task.exception.toString())
             }
-        }.addOnFailureListener {
-            Log.d("firebase image", "Unsuccesfully uploaded")
+            imagesRef.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUrl = task.result
+                project.photoUrl = downloadUrl.toString()
+                db.collection("projects").add(project)
+            }
+
         }
+
+
     }
 
     override suspend fun getProjects(): List<Project> {

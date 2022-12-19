@@ -66,4 +66,11 @@
     <string name="logout_tv">Wyloguj się</string>
     <string name="car_delete_iv">Delete car</string>
     <string name="no_cars_tv">Brak samochodów na twojej liście!</string>
+    <string name="add_project_fab">Add project</string>
+    <string name="description_text">Description text</string>
+    <string name="title_tv">Title text</string>
+    <string name="project_image">Project image</string>
+    <string name="project_title_et_hint">Tytuł projektu</string>
+    <string name="project_description_et">Opis projektu</string>
+    <string name="add_photo_btn">Dodaj zdjęcie</string>
 </resources>

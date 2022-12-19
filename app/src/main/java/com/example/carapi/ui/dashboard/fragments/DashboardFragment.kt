@@ -47,7 +47,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private fun toProjectFragment() {
         binding.projectsCv.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_projectFragment)
+            findNavController().navigate(R.id.action_dashboardFragment_to_projectsFragment)
         }
     }
 

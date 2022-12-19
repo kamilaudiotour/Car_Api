@@ -21,7 +21,7 @@ class ProjectRepositoryImpl @Inject constructor(
     override fun addProject(uri: Uri, project: Project) {
         val imagesRef = storage.reference.child("images/${uri.lastPathSegment}")
         val uploadTask = imagesRef.putFile(uri)
-        val urlTask = uploadTask.continueWithTask { task ->
+        uploadTask.continueWithTask { task ->
             if (!task.isSuccessful) {
                 Log.d("url task error", task.exception.toString())
             }

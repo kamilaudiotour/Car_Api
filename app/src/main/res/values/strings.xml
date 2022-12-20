@@ -54,9 +54,9 @@
     <string name="marker_iv">Marker icon</string>
     <string name="about_head_tv">Foliarz</string>
     <string name="car_logo_iv">Car logo icon</string>
-    <string name="dashboard_menu_item">Dashboard</string>
-    <string name="create_order_menu_item">Create Order</string>
-    <string name="profile_menu_item">Profile</string>
+    <string name="dashboard_menu_item">Panel główny</string>
+    <string name="create_order_menu_item">Zamów</string>
+    <string name="profile_menu_item">Profil</string>
     <string name="profile_iv">Profile image</string>
     <string name="profile_email_tv">Email@gmail.com</string>
     <string name="profile_name_tv">PROFILE NAME</string>

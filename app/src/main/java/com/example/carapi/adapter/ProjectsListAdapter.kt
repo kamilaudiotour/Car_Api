@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.example.carapi.R
 import com.example.carapi.adapter.ProjectsListAdapter.ProjectsViewHolder
 import com.example.carapi.databinding.ItemProjectBinding
 import com.example.carapi.models.Project
-import com.squareup.picasso.Picasso
 
 class ProjectsListAdapter() :
     ListAdapter<Project, ProjectsViewHolder>(DiffCallback) {
@@ -20,8 +22,10 @@ class ProjectsListAdapter() :
         fun bind(project: Project) {
             binding.apply {
                 Log.d("recycler view url", project.photoUrl)
-                Picasso.get()
+                Glide.with(binding.root)
                     .load(project.photoUrl)
+                    .transform(RoundedCorners(40))
+                    .placeholder(R.drawable.ic_placeholder)
                     .into(projectIv)
                 titleTv.text = project.name
                 descriptionTv.text = project.description

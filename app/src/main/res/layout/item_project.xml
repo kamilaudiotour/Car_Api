@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <LinearLayout
         android:id="@+id/item_layout"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/box_black_radius"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+
+        <ImageView
+            android:id="@+id/project_iv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            android:layout_marginTop="12dp">
-            <ImageView
-                android:id="@+id/project_iv"
-                android:layout_width="240dp"
-                android:layout_height="360dp"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/banner_iv"
-                android:src="@mipmap/ic_launcher_round" />
-        </androidx.cardview.widget.CardView>
-
-
-
-
-
+            android:layout_marginHorizontal="46dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/banner_iv"
+            android:src="@mipmap/ic_launcher_round" />
 
 
         <TextView
@@ -38,24 +29,22 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="12dp"
+            android:fontFamily="@font/lemon"
             android:text="@string/title_tv"
             android:textAlignment="center"
-            android:fontFamily="@font/lemon"
             android:textColor="@color/primary"
             android:textSize="15sp" />
 
 
-            <TextView
-                android:id="@+id/description_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+        <TextView
+            android:id="@+id/description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
 
-                android:text="@string/description_text"
-                android:textColor="@color/primary"
-                android:textSize="12sp" />
-
-
+            android:text="@string/description_text"
+            android:textColor="@color/primary"
+            android:textSize="12sp" />
 
 
     </LinearLayout>

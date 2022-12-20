@@ -33,7 +33,7 @@
                     android:fontFamily="@font/star_jedi"
                     android:gravity="center"
                     android:text="@string/dashboard_head_tv"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary"
                     android:textSize="25sp" />
 
                 <ImageView
@@ -42,7 +42,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="15dp"
                     android:contentDescription="@string/car_logo_content_description"
-                    android:src="@drawable/orange_car" />
+                    android:src="@drawable/orange_car"
+                    app:tint="@color/primary" />
             </LinearLayout>
 
             <androidx.viewpager2.widget.ViewPager2

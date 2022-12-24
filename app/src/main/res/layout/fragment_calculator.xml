@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/secondary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@color/secondary"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculator_head_tv"
+                android:layout_margin="24dp"
+                android:textSize="25sp"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/lemon"/>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                app:cardCornerRadius="40dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box_orange_radius"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/car_side_tv"
+                        android:textColor="@color/secondary"
+                        android:textSize="20sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/side_instruction_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="6dp"
+                            android:text="@string/car_side_instruction_tv"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toStartOf="@+id/side_et_layout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/side_et_layout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/dimension_et_hint"
+                            app:boxStrokeWidth="2dp"
+                            app:hintTextColor="@color/text_input_layout_color"
+                            app:boxStrokeColor="@color/text_input_layout_color"
+                            app:layout_constraintEnd_toStartOf="@id/side_unit_tv"
+                            app:layout_constraintStart_toEndOf="@+id/side_instruction_tv"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/side_et"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/side_unit_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/unit_tv"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="@id/side_et_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/side_et_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/bumper_tv"
+                        android:textColor="@color/secondary"
+                        android:textSize="20sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/bumper_instruction_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:text="@string/bumper_instruction_tv"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/bumper_et_layout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/bumper_et_layout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/dimension_et_hint"
+                            app:boxStrokeWidth="2dp"
+                            app:hintTextColor="@color/text_input_layout_color"
+                            app:boxStrokeColor="@color/text_input_layout_color"
+                            app:layout_constraintEnd_toStartOf="@id/bumper_unit_tv"
+                            app:layout_constraintStart_toEndOf="@+id/bumper_instruction_tv"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/bumper_et"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/bumper_unit_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/unit_tv"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="@id/bumper_et_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/bumper_et_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/back_tv"
+                        android:textColor="@color/secondary"
+                        android:textSize="20sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/back_instruction_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:text="@string/back_instruction_tv"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/back_et_layout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/back_et_layout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/dimension_et_hint"
+                            app:hintTextColor="@color/text_input_layout_color"
+                            app:boxStrokeColor="@color/text_input_layout_color"
+                            app:boxStrokeWidth="2dp"
+                            app:layout_constraintEnd_toStartOf="@id/back_unit_tv"
+                            app:layout_constraintStart_toEndOf="@+id/back_instruction_tv"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/back_et"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/back_unit_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/unit_tv"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="@id/back_et_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/back_et_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/bonnet_tv"
+                        android:textColor="@color/secondary"
+                        android:textSize="20sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/bonnet_instruction_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/bonnet_instruction_tv"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/bonnet_instruction_tv">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/bonnet_width_et_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/width_hint"
+                                app:boxStrokeWidth="2dp"
+                                app:hintTextColor="@color/text_input_layout_color"
+                                app:boxStrokeColor="@color/text_input_layout_color"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/bonnet_width_et"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:id="@+id/bonnet_width_unit_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/unit_tv"
+                                android:textColor="@color/secondary"
+                                android:textSize="15sp"
+                                app:layout_constraintBottom_toBottomOf="@id/bonnet_width_et_layout"
+                                app:layout_constraintStart_toEndOf="@id/bonnet_width_et_layout" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/bonnet_height_et_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/height_hint"
+                                app:boxStrokeWidth="2dp"
+                                android:layout_marginStart="8dp"
+                                app:hintTextColor="@color/text_input_layout_color"
+                                app:boxStrokeColor="@color/text_input_layout_color"
+                                app:layout_constraintStart_toEndOf="@id/bonnet_width_unit_tv"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/bonnet_height_et"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:id="@+id/bonnet_height_unit_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/unit_tv"
+                                android:textColor="@color/secondary"
+                                android:textSize="15sp"
+                                app:layout_constraintBottom_toBottomOf="@id/bonnet_height_et_layout"
+                                app:layout_constraintStart_toEndOf="@id/bonnet_height_et_layout" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/roof_tv"
+                        android:textColor="@color/secondary"
+                        android:textSize="20sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/roof_instruction_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/roof_instruction_tv"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/secondary"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/roof_instruction_tv">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/roof_width_et_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/text_input_layout_color"
+                                app:boxStrokeColor="@color/text_input_layout_color"
+                                android:hint="@string/width_hint"
+                                app:boxStrokeWidth="2dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/roof_width_et"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:id="@+id/roof_width_unit_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/unit_tv"
+                                android:textColor="@color/secondary"
+                                android:textSize="15sp"
+                                app:layout_constraintBottom_toBottomOf="@id/roof_width_et_layout"
+                                app:layout_constraintStart_toEndOf="@id/roof_width_et_layout" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/roof_height_et_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/height_hint"
+                                app:hintTextColor="@color/text_input_layout_color"
+                                app:boxStrokeColor="@color/text_input_layout_color"
+                                app:boxStrokeWidth="2dp"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintStart_toEndOf="@id/roof_width_unit_tv"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/roof_height_et"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:id="@+id/roof_height_unit_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/unit_tv"
+                                android:textColor="@color/secondary"
+                                android:textSize="15sp"
+                                app:layout_constraintBottom_toBottomOf="@id/roof_height_et_layout"
+                                app:layout_constraintStart_toEndOf="@id/roof_height_et_layout" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    
+                    
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/confirm_btn"
+                        android:layout_marginTop="24dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/box_black_radius"
+                        android:text="@string/confrim_dimension_btn"
+                        android:textSize="15sp"
+                        android:textColor="@color/primary"
+                        android:padding="12dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="48dp"
+                app:cardCornerRadius="20dp">
+
+                <WebView
+                    android:id="@+id/yt_video_wv"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

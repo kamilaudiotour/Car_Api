@@ -4,6 +4,8 @@ import com.example.carapi.api.CarsApi
 import com.example.carapi.api.MyInterceptor
 import com.example.carapi.repository.banners.BannersRepository
 import com.example.carapi.repository.banners.BannersRepositoryImpl
+import com.example.carapi.repository.calculator.CalculatorRepository
+import com.example.carapi.repository.calculator.CalculatorRepositoryImpl
 import com.example.carapi.repository.car.CarRepository
 import com.example.carapi.repository.car.CarRepositoryImpl
 import com.example.carapi.repository.login.LoginRepository
@@ -90,16 +92,22 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesProfileRepository(firebaseFirestore: FirebaseFirestore): ProfileRepository =
-        ProfileRepositoryImpl(firebaseFirestore)
+    fun providesProfileRepository(
+        firebaseFirestore: FirebaseFirestore,
+        firebaseAuth: FirebaseAuth
+    ): ProfileRepository =
+        ProfileRepositoryImpl(firebaseFirestore, firebaseAuth)
 
 
     @Provides
     @Singleton
     fun providesProjectRepository(
         db: FirebaseFirestore,
-        storage: FirebaseStorage
-    ): ProjectRepository = ProjectRepositoryImpl(db, storage)
+        storage: FirebaseStorage,
+        auth: FirebaseAuth
+    ): ProjectRepository = ProjectRepositoryImpl(db, storage, auth)
 
-
+    @Provides
+    @Singleton
+    fun providesCalculatorRepository(db: FirebaseFirestore) : CalculatorRepository = CalculatorRepositoryImpl(db)
 }

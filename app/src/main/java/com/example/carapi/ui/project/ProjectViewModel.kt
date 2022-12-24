@@ -19,6 +19,9 @@ class ProjectViewModel @Inject constructor(private val projectRepository: Projec
     private val _projects = MutableLiveData<List<Project>>()
     val projects: LiveData<List<Project>>
         get() = _projects
+    private val _isUserAdmin = MutableLiveData<Boolean>()
+    val isUserAdmin: LiveData<Boolean>
+        get() = _isUserAdmin
 
     init {
         getProjects()
@@ -33,5 +36,12 @@ class ProjectViewModel @Inject constructor(private val projectRepository: Projec
             _projects.value = projectRepository.getProjects()
         }
     }
+
+    fun isUserAdmin() {
+        viewModelScope.launch {
+            _isUserAdmin.value = projectRepository.isUserAdmin()
+        }
+    }
+
 
 }

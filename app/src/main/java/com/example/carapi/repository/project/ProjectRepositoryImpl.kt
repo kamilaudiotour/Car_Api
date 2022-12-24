@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Log
 import com.example.carapi.models.Project
 import com.example.carapi.util.await
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.storage.FirebaseStorage
@@ -11,7 +12,8 @@ import javax.inject.Inject
 
 class ProjectRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
-    private val storage: FirebaseStorage
+    private val storage: FirebaseStorage,
+    private val auth: FirebaseAuth
 ) : ProjectRepository {
 
     init {
@@ -53,5 +55,15 @@ class ProjectRepositoryImpl @Inject constructor(
 
         return projectList
 
+    }
+
+    override suspend fun isUserAdmin() : Boolean{
+        val userId = auth.currentUser?.uid.toString()
+        Log.d("isuseradmin", userId)
+        val userDocRef = db.collection("users data").document(userId)
+        val snapshot = userDocRef.get().await()
+        val doc = snapshot.data?.get("isAdmin")
+        Log.d("isuseradmin", doc.toString())
+        return doc.toString() == "true"
     }
 }

@@ -77,6 +77,17 @@
         <action
             android:id="@+id/action_dashboardFragment_to_projectsFragment"
             app:destination="@id/projectsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_dimensionsFragment"
+            app:destination="@id/dimensionsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_createOrderFragment"
+            app:destination="@id/createOrderFragment"
+            app:popUpToSaveState="true"
+            app:popUpTo="@id/dashboardFragment"/>
     </fragment>
     <fragment
         android:id="@+id/bannerFragment"
@@ -128,4 +139,20 @@
             android:id="@+id/action_projectsFragment_to_addProjectDialogFragment"
             app:destination="@id/addProjectDialogFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dimensionsFragment"
+        android:name="com.example.carapi.ui.dimensions.fragments.DimensionsFragment"
+        android:label="DimensionsFragment" />
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.carapi.ui.calculator.fragments.CalculatorFragment"
+        android:label="CalculatorFragment" >
+        <action
+            android:id="@+id/action_calculatorFragment_to_calculatorResultDialogFragment"
+            app:destination="@id/calculatorResultDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/calculatorResultDialogFragment"
+        android:name="com.example.carapi.ui.calculator.fragments.CalculatorResultDialogFragment"
+        android:label="CalculatorResultDialogFragment" />
 </navigation>

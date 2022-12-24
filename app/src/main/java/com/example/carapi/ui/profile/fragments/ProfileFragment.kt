@@ -35,9 +35,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         //show bottom nav bar if there was a fragment that hided it before
         showBottomNavBar()
 
-
-
-
         binding.apply {
 
             logoutBtn.setOnClickListener {
@@ -52,17 +49,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileNameTv.text = loginViewModel.currentUser?.displayName
             profileEmailTv.text = loginViewModel.currentUser?.email.toString()
         }
-        // get currently logged in user id
-        val userId = loginViewModel.currentUser?.uid.toString()
-
-        // load user's cars database
-        loadData(userId)
-        setupRv(userId)
-
-        checkForCarToAdd(userId)
 
         // initial load of user's car database
-        profileViewModel.readCarsData(userId)
+        profileViewModel.readCarsData()
+
+
+        // load list of cars to recycler view
+        setupRv()
+        loadData()
+
+        // check if there is a car to add to list
+        checkForCarToAdd()
+
+
 
         // check if there is an argument from car make and models fragment and pass it to firebase
         // checkForCarToAdd(userId)
@@ -71,15 +70,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         return binding.root
     }
 
-    private fun checkForCarToAdd(userId: String) {
+    private fun checkForCarToAdd() {
         val car = carViewModel.selectedCar.value
         if (car != null) {
-            profileViewModel.saveCar(userId, car)
+            profileViewModel.saveCar(car)
             carViewModel.afterCarAdded()
         }
     }
 
-    private fun loadData(userId: String) {
+    private fun loadData() {
         profileViewModel.profileCars.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
                 binding.noCarsTv.visibility = View.VISIBLE
@@ -87,7 +86,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             } else {
                 binding.noCarsTv.visibility = View.GONE
                 binding.profileCarsRv.visibility = View.VISIBLE
-                profileViewModel.readCarsData(userId)
+                profileViewModel.readCarsData()
                 carProfileAdapter.submitList(it)
             }
 
@@ -95,9 +94,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
     }
 
-    private fun setupRv(userId: String) {
+    private fun setupRv() {
         carProfileAdapter = CarProfileListAdapter(CarProfileClickListener {
-            profileViewModel.deleteCar(userId, it)
+            profileViewModel.deleteCar(it)
         })
         binding.profileCarsRv.apply {
             layoutManager =

@@ -5,20 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.carapi.adapter.CarProfileListAdapter.CarProfileViewHolder
-import com.example.carapi.databinding.ItemCarProfileBinding
+import com.example.carapi.adapter.CarCalculatorListAdapter.CarCalculatorViewHolder
+import com.example.carapi.databinding.ItemCarCalculatorBinding
 import com.example.carapi.models.Car
 
-class CarProfileListAdapter(
-    private val clickListener: CarProfileClickListener,
+class CarCalculatorListAdapter(
+    private val clickListener: CarCalculatorClickListener,
+) :
+    ListAdapter<Car, CarCalculatorViewHolder>(DiffCallback) {
 
-    ) :
-    ListAdapter<Car, CarProfileViewHolder>(DiffCallback) {
-
-    inner class CarProfileViewHolder(private var binding: ItemCarProfileBinding) :
+    inner class CarCalculatorViewHolder(private var binding: ItemCarCalculatorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: CarProfileClickListener, car: Car) {
+        fun bind(clickListener: CarCalculatorClickListener, car: Car) {
             binding.car = car
             binding.clickListener = clickListener
 
@@ -33,9 +32,9 @@ class CarProfileListAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarProfileViewHolder {
-        return CarProfileViewHolder(
-            ItemCarProfileBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarCalculatorViewHolder {
+        return CarCalculatorViewHolder(
+            ItemCarCalculatorBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -43,7 +42,7 @@ class CarProfileListAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: CarProfileViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CarCalculatorViewHolder, position: Int) {
         val car = getItem(position)
         holder.bind(clickListener, car)
     }
@@ -61,6 +60,6 @@ class CarProfileListAdapter(
 
 }
 
-class CarProfileClickListener(val clickListener: (car: Car) -> Unit) {
+class CarCalculatorClickListener(val clickListener: (car: Car) -> Unit) {
     fun onClick(car: Car) = clickListener(car)
 }

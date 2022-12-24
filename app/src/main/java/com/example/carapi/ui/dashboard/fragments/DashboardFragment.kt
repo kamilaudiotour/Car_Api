@@ -32,11 +32,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         //set bottom nav bar visible
         showBottomNavBar()
 
-        //wait for about us card view to be clicked
-        toAboutUsFragment()
 
-        // wait for project card view to be clicked
-        toProjectFragment()
+        // setup clicklisteners to navigate to different fragments
+        handleDashboardNavActions()
 
         //load list of banner promotions from folia-samochodowa.pl and attach it to list adapter + circle indicator setup
         loadData()
@@ -45,11 +43,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         return binding.root
     }
 
-    private fun toProjectFragment() {
-        binding.projectsCv.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_projectsFragment)
-        }
-    }
 
     private fun showBottomNavBar() {
         val navBar = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -75,9 +68,24 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
     }
 
-    private fun toAboutUsFragment() {
-        binding.aboutCv.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_aboutUsFragment)
+
+    private fun handleDashboardNavActions() {
+        binding.apply {
+            dimensionCv.setOnClickListener {
+                findNavController().navigate(R.id.action_dashboardFragment_to_dimensionsFragment)
+            }
+            projectsCv.setOnClickListener {
+                findNavController().navigate(R.id.action_dashboardFragment_to_projectsFragment)
+            }
+            aboutCv.setOnClickListener {
+                findNavController().navigate(R.id.action_dashboardFragment_to_aboutUsFragment)
+            }
+            createCv.setOnClickListener{
+                findNavController().navigate(R.id.action_dashboardFragment_to_createOrderFragment)
+            }
+            calculatorCv.setOnClickListener {
+                findNavController().navigate(R.id.action_dashboardFragment_to_calculatorFragment)
+            }
         }
     }
 }

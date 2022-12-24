@@ -7,4 +7,5 @@ interface ProjectRepository {
 
     fun addProject(uri: Uri, project: Project)
     suspend fun getProjects(): List<Project>
+    suspend fun isUserAdmin() : Boolean
 }

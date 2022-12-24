@@ -20,18 +20,18 @@ class ProfileViewModel @Inject constructor(private val profileRepository: Profil
         get() = _profileCars
 
 
-    fun saveCar(userId: String, car: Car) {
-        profileRepository.addCar(userId, car)
+    fun saveCar(car: Car) {
+        profileRepository.addCar(car)
     }
 
-    fun readCarsData(userId: String) {
+    fun readCarsData() {
         viewModelScope.launch {
-            _profileCars.value = profileRepository.readCarsData(userId)
+            _profileCars.value = profileRepository.readCarsData()
         }
     }
 
-    fun deleteCar(userId: String, car: Car) {
-        profileRepository.deleteCar(userId, car)
+    fun deleteCar(car: Car) {
+        profileRepository.deleteCar(car)
     }
 
 

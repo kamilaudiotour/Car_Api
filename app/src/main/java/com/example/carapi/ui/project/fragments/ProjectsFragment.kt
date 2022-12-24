@@ -28,6 +28,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
         binding = FragmentProjectsBinding.inflate(inflater, container, false)
 
         hideBottomNav()
+        hideFABwhenUserIsNotAdmin()
 
         loadData()
         setUpRv()
@@ -46,6 +47,21 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
             viewModel.getProjects()
             projectsAdapter.submitList(projects)
         }
+    }
+
+    private fun hideFABwhenUserIsNotAdmin() {
+        binding.addProjectFab.visibility = View.GONE
+        viewModel.isUserAdmin()
+        viewModel.isUserAdmin.observe(viewLifecycleOwner) { isAdmin ->
+
+            if (!isAdmin) {
+                binding.addProjectFab.visibility = View.GONE
+            } else {
+                binding.addProjectFab.visibility = View.VISIBLE
+            }
+
+        }
+
     }
 
 

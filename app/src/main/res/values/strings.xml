@@ -101,4 +101,8 @@
     <string name="disclaimer_tv">* Zapisując wynik, dodajesz go do wspólnej bazy dla wszystkich użytkowników, inni będą mogli sugerować się Twoim pomiarem w przyszłości</string>
     <string name="save_btn_text">Zapisz</string>
     <string name="dismiss_btn_text">Odrzuć</string>
+    <string name="dimensions_head_tv">Samochody wymierzone\nprzez użytkowników</string>
+    <string name="foil_hint_iv">Foil hint image</string>
+    <string name="by_tv">przez %s</string>
+    <string name="dimensions_need_tv">Zapotrzebowanie</string>
 </resources>

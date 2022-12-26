@@ -460,6 +460,22 @@
                     android:layout_height="260dp" />
             </androidx.cardview.widget.CardView>
 
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hint_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="48dp"
+               >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:src="@drawable/car_wrap_hint"
+                    android:contentDescription="@string/measure_hint_content" />
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 </layout>

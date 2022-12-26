@@ -18,17 +18,7 @@ class ProfileRepositoryImpl @Inject constructor(
         db.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
     }
 
-    override fun addCar(
-        car: Car
-    ) {
 
-        db.collection("users data").document(auth.currentUser?.uid.toString()).collection("cars")
-            .document(car.id.toString())
-            .set(car)
-            .addOnSuccessListener { Log.d("firebase save", "DocumentSnapshot succesfully written") }
-            .addOnFailureListener { e -> Log.w("firebase save", "Error writing document", e) }
-
-    }
 
     override suspend fun readCarsData(): List<Car> {
         val carList = mutableListOf<Car>()

@@ -1,6 +1,7 @@
 package com.example.carapi.ui.project.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +46,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
     private fun loadData() {
         viewModel.projects.observe(viewLifecycleOwner) { projects ->
             viewModel.getProjects()
+            Log.d("frag proj", projects.toString())
             projectsAdapter.submitList(projects)
         }
     }

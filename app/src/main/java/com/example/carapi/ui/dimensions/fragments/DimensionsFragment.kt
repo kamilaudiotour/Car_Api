@@ -1,7 +1,6 @@
 package com.example.carapi.ui.dimensions.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ class DimensionsFragment : Fragment(R.layout.fragment_dimensions) {
 
     private lateinit var binding: FragmentDimensionsBinding
     private val viewModel: DimensionsViewModel by activityViewModels()
-    private lateinit var dimensionsAdapter : DimensionsListAdapter
+    private lateinit var dimensionsAdapter: DimensionsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,13 +26,13 @@ class DimensionsFragment : Fragment(R.layout.fragment_dimensions) {
     ): View {
         binding = FragmentDimensionsBinding.inflate(inflater, container, false)
 
-        viewModel.measurement.observe(viewLifecycleOwner){
-            Log.d("diemn frag", it.toString())
-        }
-        loadData()
-        setupRv()
 
         hideBottomNav()
+
+        setupRv()
+        loadData()
+
+
 
         return binding.root
 
@@ -44,16 +43,19 @@ class DimensionsFragment : Fragment(R.layout.fragment_dimensions) {
         navBar?.visibility = View.GONE
     }
 
-    private fun setupRv(){
+    private fun setupRv() {
         dimensionsAdapter = DimensionsListAdapter()
         binding.dimensionsRv.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = adapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = dimensionsAdapter
             setHasFixedSize(true)
         }
     }
-    private fun loadData(){
-        viewModel.measurement.observe(viewLifecycleOwner){ measurement ->
+
+    private fun loadData() {
+        viewModel.measurement.observe(viewLifecycleOwner) { measurement ->
+            viewModel.getMeasurement()
             dimensionsAdapter.submitList(measurement)
         }
     }

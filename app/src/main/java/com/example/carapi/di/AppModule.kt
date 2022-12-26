@@ -67,7 +67,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCarRepository(api: CarsApi): CarRepository = CarRepositoryImpl(api)
+    fun provideCarRepository(api: CarsApi, db: FirebaseFirestore, auth: FirebaseAuth): CarRepository = CarRepositoryImpl(api,db, auth)
 
 
     @Provides

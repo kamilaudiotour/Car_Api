@@ -105,4 +105,8 @@
     <string name="foil_hint_iv">Foil hint image</string>
     <string name="by_tv">przez %s</string>
     <string name="dimensions_need_tv">Zapotrzebowanie</string>
+    <string name="measure_hint_content">Measure hint image</string>
+    <string name="no_network_tv">Brak połączenia z siecią</string>
+    <string name="no_network_iv">No internet Image</string>
+    <string name="no_results_tv">Brak wyników</string>
 </resources>

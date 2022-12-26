@@ -8,6 +8,8 @@ import retrofit2.Response
 
 interface CarRepository {
 
+    fun addCar(car: Car)
+
     suspend fun getCarsMakes(
     ): Response<MutableList<String>>
 

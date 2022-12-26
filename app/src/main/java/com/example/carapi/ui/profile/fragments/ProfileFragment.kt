@@ -12,7 +12,6 @@ import com.example.carapi.R
 import com.example.carapi.adapter.CarProfileClickListener
 import com.example.carapi.adapter.CarProfileListAdapter
 import com.example.carapi.databinding.FragmentProfileBinding
-import com.example.carapi.ui.car.CarViewModel
 import com.example.carapi.ui.login.LoginViewModel
 import com.example.carapi.ui.profile.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,8 +20,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var binding: FragmentProfileBinding
     private val loginViewModel: LoginViewModel by activityViewModels()
     private val profileViewModel: ProfileViewModel by activityViewModels()
-    private val carViewModel: CarViewModel by activityViewModels()
     private lateinit var carProfileAdapter: CarProfileListAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +44,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             addCarBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_profileFragment_to_carFragment)
             }
-
             profileNameTv.text = loginViewModel.currentUser?.displayName
             profileEmailTv.text = loginViewModel.currentUser?.email.toString()
         }
@@ -58,25 +56,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         setupRv()
         loadData()
 
-        // check if there is a car to add to list
-        checkForCarToAdd()
 
 
-
-        // check if there is an argument from car make and models fragment and pass it to firebase
-        // checkForCarToAdd(userId)
 
 
         return binding.root
     }
 
-    private fun checkForCarToAdd() {
-        val car = carViewModel.selectedCar.value
-        if (car != null) {
-            profileViewModel.saveCar(car)
-            carViewModel.afterCarAdded()
-        }
-    }
 
     private fun loadData() {
         profileViewModel.profileCars.observe(viewLifecycleOwner) {

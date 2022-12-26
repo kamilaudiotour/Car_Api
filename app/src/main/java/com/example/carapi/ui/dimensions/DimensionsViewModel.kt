@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.carapi.models.Measurement
-import com.example.carapi.models.Project
 import com.example.carapi.repository.dimensions.DimensionsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,7 +23,8 @@ class DimensionsViewModel @Inject constructor(private val dimensionsRepository: 
         getMeasurement()
     }
 
-    fun getMeasurement(){
+
+    fun getMeasurement() {
         viewModelScope.launch {
             _measurement.value = dimensionsRepository.getMeasurement()
         }

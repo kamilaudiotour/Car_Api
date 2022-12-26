@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CarViewModel @Inject constructor(
     private val carRepository: CarRepository
-) : ViewModel() {
+    ) : ViewModel() {
 
     val carMakes: MutableLiveData<Resource<List<String>>> = MutableLiveData()
 
@@ -25,7 +25,7 @@ class CarViewModel @Inject constructor(
     private val carMake = MutableLiveData("BMW")
 
     //gets updated when user choose his/her car make and model, type and year in CarModelFragment, then used to create Car object which is saved in database as user's car in list of his cars
-    val selectedCar = MutableLiveData<Car?>(null)
+    val selectedCar = MutableLiveData<Car?>()
 
     // also query for car models filter, gets updated when user start typing model
     private val modelQuery = MutableLiveData("")
@@ -46,7 +46,7 @@ class CarViewModel @Inject constructor(
     }
 
 
-    private fun getCarMakes() = viewModelScope.launch {
+    fun getCarMakes() = viewModelScope.launch {
         carMakes.postValue(Resource.Loading())
         val response = carRepository.getCarsMakes()
         carMakes.postValue(handleCarMakesResponse(response))
@@ -70,6 +70,7 @@ class CarViewModel @Inject constructor(
         return Resource.Error(response.message())
     }
 
+
     fun searchModel(query: String) {
         modelQuery.value = query
     }
@@ -84,6 +85,11 @@ class CarViewModel @Inject constructor(
 
     fun afterCarAdded() {
         selectedCar.value = null
+    }
+
+    fun saveCar(car: Car) {
+        carRepository.addCar(car)
+        afterCarAdded()
     }
 
 

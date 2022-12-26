@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carapi.R
-import com.example.carapi.adapter.DimensionsListAdapter.*
+import com.example.carapi.adapter.DimensionsListAdapter.DimensionsViewHolder
 import com.example.carapi.databinding.ItemMeasurementBinding
 import com.example.carapi.models.Measurement
 
@@ -24,6 +24,7 @@ class DimensionsListAdapter() : ListAdapter<Measurement, DimensionsViewHolder>(D
                 modelTv.text = measurement.car.model
                 yearTv.text = measurement.car.year
                 typeTv.text = measurement.car.type
+
 
             }
             binding.executePendingBindings()

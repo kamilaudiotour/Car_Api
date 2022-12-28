@@ -109,4 +109,5 @@
     <string name="no_network_tv">Brak połączenia z siecią</string>
     <string name="no_network_iv">No internet Image</string>
     <string name="no_results_tv">Brak wyników</string>
+    <string name="connect_network_tv">Połącz z internetem, by wyświetlić promocje</string>
 </resources>

@@ -47,6 +47,7 @@ class CarModelsFragment : Fragment(R.layout.fragment_car_models) {
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         if (query != null) {
+                            binding.noResultsTv.visibility  = View.GONE
                             binding.carRv.scrollToPosition(0)
                             viewModel.searchModel(query)
                             searchView.clearFocus()

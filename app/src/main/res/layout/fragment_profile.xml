@@ -18,8 +18,7 @@
             app:cardCornerRadius="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,22 +56,24 @@
                     android:text="@string/your_cars_tv"
                     android:textColor="@color/primary"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginTop="8dp"
                     android:id="@+id/no_cars_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/primary"
+                    android:layout_marginTop="8dp"
                     android:text="@string/no_cars_tv"
-                    android:textSize="15sp"/>
+                    android:textColor="@color/primary"
+                    android:textSize="15sp" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/profile_cars_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:itemCount="0"
-                    android:paddingVertical="20dp"
                     android:layout_gravity="center"
-                    />
+                    android:paddingVertical="20dp"
+                    tools:itemCount="0" />
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/add_car_btn"
                     android:layout_width="match_parent"
@@ -93,17 +94,17 @@
                     android:id="@+id/logout_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginTop="16dp"
-                    android:padding="12dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/box_black_radius"
                     android:clickable="true"
                     android:focusable="true"
                     android:fontFamily="@font/lemon"
                     android:foreground="?android:selectableItemBackground"
+                    android:padding="12dp"
                     android:text="@string/logout_tv"
                     android:textColor="@color/primary"
-                    android:layout_gravity="end"
                     android:textSize="12sp"
                     tools:ignore="UnusedAttribute" />
 

@@ -46,7 +46,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
 
         hideBottomNav()
 
-        // continously check for network statuts and if network is available load Car Makes List
+        // continuously check for network statuts and if network is available load Car Makes List
         checkNetworkAndLoadData()
         //Setup Recycler View and onItemClickListener
         setupRv()
@@ -66,7 +66,7 @@ class CarMakesFragment : Fragment(R.layout.fragment_car_makes) {
                 }
                 is Resource.Error -> {
                     response.message?.let { message ->
-                        Log.e(TAG, "error occured: $message")
+                        Log.e(TAG, "Error occured: $message")
                     }
                 }
                 is Resource.Loading -> {

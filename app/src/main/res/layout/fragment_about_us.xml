@@ -33,10 +33,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="12dp"
-                android:textAlignment="center"
                 android:layout_toEndOf="@id/car_logo_iv"
                 android:fontFamily="@font/lemon"
                 android:text="@string/about_head_tv"
+                android:textAlignment="center"
                 android:textColor="@color/primary"
                 android:textSize="40sp" />
         </RelativeLayout>
@@ -87,8 +87,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -141,12 +140,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/contact_iv"
                     android:fontFamily="@font/lemon"
                     android:text="@string/contact_tv"
                     android:textColor="@color/primary"
-                    android:layout_toStartOf="@+id/contact_iv"
-                    android:textSize="25sp"
-                     />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:id="@+id/contact_iv"
@@ -247,12 +245,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/message_iv"
                     android:fontFamily="@font/lemon"
                     android:text="@string/about_us_head_tv"
                     android:textColor="@color/primary"
-                    android:textSize="25sp"
-                    android:layout_toStartOf="@id/message_iv"
-                     />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:id="@+id/message_iv"

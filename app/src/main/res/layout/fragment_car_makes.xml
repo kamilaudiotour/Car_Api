@@ -11,9 +11,6 @@
         tools:context=".ui.car.fragments.CarMakesFragment">
 
 
-
-
-
         <ImageView
             android:id="@+id/no_network_iv"
             android:layout_width="60dp"

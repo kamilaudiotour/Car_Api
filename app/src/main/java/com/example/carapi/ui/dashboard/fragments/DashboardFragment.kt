@@ -1,11 +1,15 @@
 package com.example.carapi.ui.dashboard.fragments
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.carapi.R
@@ -13,7 +17,12 @@ import com.example.carapi.adapter.BannerListener
 import com.example.carapi.adapter.ViewPagerAdapter
 import com.example.carapi.databinding.FragmentDashboardBinding
 import com.example.carapi.ui.dashboard.BannersViewModel
+import com.example.carapi.util.ConnectivityObserver
+import com.example.carapi.util.NetworkConnectivityObserver
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
@@ -21,6 +30,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private val viewModel by activityViewModels<BannersViewModel>()
     private lateinit var adapter: ViewPagerAdapter
     private lateinit var viewPager: ViewPager2
+    private lateinit var connectivityObserver: ConnectivityObserver
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +47,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         handleDashboardNavActions()
 
         //load list of banner promotions from folia-samochodowa.pl and attach it to list adapter + circle indicator setup
-        loadData()
+        checkNetworkAndLoadData()
         setupViewPager()
 
         return binding.root
@@ -68,6 +78,41 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
     }
 
+    private fun checkNetworkAndLoadData() {
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectivityObserver = NetworkConnectivityObserver(requireContext())
+        connectivityObserver.observe().onStart {
+            val networkCapabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (networkCapabilities == null || !networkCapabilities.hasCapability(
+                    NetworkCapabilities.NET_CAPABILITY_INTERNET
+                )
+            ) {
+                emit(ConnectivityObserver.Status.Unavailable)
+            } else {
+                emit(ConnectivityObserver.Status.Available)
+            }
+        }.onEach {
+            when (it) {
+                ConnectivityObserver.Status.Available -> {
+                    loadData()
+                    networkWorkingComponents()
+                }
+                ConnectivityObserver.Status.Lost -> {
+                    noNetworkComponents()
+                    noNetworkComponents()
+                }
+                ConnectivityObserver.Status.Losing -> {
+                    networkWorkingComponents()
+                }
+                ConnectivityObserver.Status.Unavailable -> {
+                    noNetworkComponents()
+                }
+            }
+        }.launchIn(lifecycleScope)
+    }
+
 
     private fun handleDashboardNavActions() {
         binding.apply {
@@ -86,6 +131,23 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             calculatorCv.setOnClickListener {
                 findNavController().navigate(R.id.action_dashboardFragment_to_calculatorFragment)
             }
+        }
+    }
+
+    private fun noNetworkComponents(){
+        binding.apply {
+            viewPager.visibility = View.GONE
+            indicator.visibility = View.GONE
+            noNetworkTv.visibility = View.VISIBLE
+
+        }
+    }
+
+    private fun networkWorkingComponents(){
+        binding.apply {
+            viewPager.visibility = View.VISIBLE
+            indicator.visibility = View.VISIBLE
+            noNetworkTv.visibility = View.GONE
         }
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,16 +18,15 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
-            android:background="@color/secondary"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:background="@color/secondary"
+            android:elevation="60dp"
+            app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:itemTextColor="@color/white"
-            app:menu="@menu/menu_bottom_dashboard"
-            android:elevation="60dp"
-            />
+            app:menu="@menu/menu_bottom_dashboard" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

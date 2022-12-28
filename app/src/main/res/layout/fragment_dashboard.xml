@@ -46,11 +46,37 @@
                     app:tint="@color/primary" />
             </LinearLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/view_pager"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="264dp"
-                android:layout_marginHorizontal="42dp" />
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="264dp"
+                    android:layout_marginHorizontal="42dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/no_network_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="264dp"
+                    android:fontFamily="@font/tommy_bold"
+                    android:text="@string/connect_network_tv"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/primary"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <me.relex.circleindicator.CircleIndicator3
                 android:id="@+id/indicator"
@@ -61,11 +87,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="56dp"
                 android:alignmentMode="alignMargins"
                 android:columnCount="2"
                 android:columnOrderPreserved="false"
-                android:rowCount="3"
-                android:layout_marginBottom="56dp">
+                android:rowCount="3">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/create_cv"
@@ -75,12 +101,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
-                    android:foreground="?android:selectableItemBackground">
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -118,12 +144,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
-                    android:foreground="?android:selectableItemBackground">
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -160,12 +186,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
-                    android:foreground="?android:selectableItemBackground">
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -203,12 +229,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
-                    android:foreground="?android:selectableItemBackground">
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -246,12 +272,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
-                    android:foreground="?android:selectableItemBackground">
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -290,13 +316,12 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="6dp"
-                    android:elevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="60dp"
                     android:clickable="true"
+                    android:elevation="6dp"
                     android:focusable="true"
                     android:foreground="?android:selectableItemBackground"
-                    >
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

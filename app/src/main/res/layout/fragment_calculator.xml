@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,12 +18,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/calculator_head_tv"
                 android:layout_margin="24dp"
-                android:textSize="25sp"
+                android:fontFamily="@font/lemon"
+                android:text="@string/calculator_head_tv"
                 android:textColor="@color/primary"
-                android:fontFamily="@font/lemon"/>
-
+                android:textSize="25sp" />
 
 
             <androidx.cardview.widget.CardView
@@ -74,9 +72,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="@string/dimension_et_hint"
+                            app:boxStrokeColor="@color/text_input_layout_color"
                             app:boxStrokeWidth="2dp"
                             app:hintTextColor="@color/text_input_layout_color"
-                            app:boxStrokeColor="@color/text_input_layout_color"
                             app:layout_constraintEnd_toStartOf="@id/side_unit_tv"
                             app:layout_constraintStart_toEndOf="@+id/side_instruction_tv"
                             app:layout_constraintTop_toTopOf="parent">
@@ -138,9 +136,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="@string/dimension_et_hint"
+                            app:boxStrokeColor="@color/text_input_layout_color"
                             app:boxStrokeWidth="2dp"
                             app:hintTextColor="@color/text_input_layout_color"
-                            app:boxStrokeColor="@color/text_input_layout_color"
                             app:layout_constraintEnd_toStartOf="@id/bumper_unit_tv"
                             app:layout_constraintStart_toEndOf="@+id/bumper_instruction_tv"
                             app:layout_constraintTop_toTopOf="parent">
@@ -200,9 +198,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="@string/dimension_et_hint"
-                            app:hintTextColor="@color/text_input_layout_color"
                             app:boxStrokeColor="@color/text_input_layout_color"
                             app:boxStrokeWidth="2dp"
+                            app:hintTextColor="@color/text_input_layout_color"
                             app:layout_constraintEnd_toStartOf="@id/back_unit_tv"
                             app:layout_constraintStart_toEndOf="@+id/back_instruction_tv"
                             app:layout_constraintTop_toTopOf="parent">
@@ -268,9 +266,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/width_hint"
+                                app:boxStrokeColor="@color/text_input_layout_color"
                                 app:boxStrokeWidth="2dp"
                                 app:hintTextColor="@color/text_input_layout_color"
-                                app:boxStrokeColor="@color/text_input_layout_color"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -298,11 +296,11 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/height_hint"
-                                app:boxStrokeWidth="2dp"
                                 android:layout_marginStart="8dp"
-                                app:hintTextColor="@color/text_input_layout_color"
+                                android:hint="@string/height_hint"
                                 app:boxStrokeColor="@color/text_input_layout_color"
+                                app:boxStrokeWidth="2dp"
+                                app:hintTextColor="@color/text_input_layout_color"
                                 app:layout_constraintStart_toEndOf="@id/bonnet_width_unit_tv"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -367,10 +365,10 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:hintTextColor="@color/text_input_layout_color"
-                                app:boxStrokeColor="@color/text_input_layout_color"
                                 android:hint="@string/width_hint"
+                                app:boxStrokeColor="@color/text_input_layout_color"
                                 app:boxStrokeWidth="2dp"
+                                app:hintTextColor="@color/text_input_layout_color"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -398,11 +396,11 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
                                 android:hint="@string/height_hint"
-                                app:hintTextColor="@color/text_input_layout_color"
                                 app:boxStrokeColor="@color/text_input_layout_color"
                                 app:boxStrokeWidth="2dp"
-                                android:layout_marginStart="8dp"
+                                app:hintTextColor="@color/text_input_layout_color"
                                 app:layout_constraintStart_toEndOf="@id/roof_width_unit_tv"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -428,20 +426,20 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    
-                    
+
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/confirm_btn"
-                        android:layout_marginTop="24dp"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
                         android:background="@drawable/box_black_radius"
-                        android:text="@string/confrim_dimension_btn"
-                        android:textSize="15sp"
-                        android:textColor="@color/primary"
-                        android:padding="12dp"
                         android:fontFamily="@font/tommy_bold"
-                        android:layout_gravity="center"/>
+                        android:padding="12dp"
+                        android:text="@string/confrim_dimension_btn"
+                        android:textColor="@color/primary"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -466,14 +464,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                app:cardCornerRadius="20dp"
                 android:layout_marginTop="48dp"
-               >
+                app:cardCornerRadius="20dp">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="300dp"
-                    android:src="@drawable/car_wrap_hint"
-                    android:contentDescription="@string/measure_hint_content" />
+                    android:contentDescription="@string/measure_hint_content"
+                    android:src="@drawable/car_wrap_hint" />
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>

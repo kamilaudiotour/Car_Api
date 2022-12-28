@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="clickListener"
             type="com.example.carapi.adapter.CarModelClickListener" />
@@ -18,8 +19,8 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="12dp"
         android:elevation="20dp"
-        app:cardCornerRadius="40dp"
-        android:onClick="@{() -> clickListener.onClick(car)}">
+        android:onClick="@{() -> clickListener.onClick(car)}"
+        app:cardCornerRadius="40dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,10 +30,10 @@
             android:padding="12dp">
 
             <ImageView
-                android:contentDescription="@string/car_iv"
                 android:id="@+id/car_iv"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:contentDescription="@string/car_iv"
                 android:src="@drawable/ic_car_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

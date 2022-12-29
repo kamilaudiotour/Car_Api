@@ -131,6 +131,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             calculatorCv.setOnClickListener {
                 findNavController().navigate(R.id.action_dashboardFragment_to_calculatorFragment)
             }
+            calendarCv.setOnClickListener {
+                findNavController().navigate((R.id.action_dashboardFragment_to_calendarFragment))
+            }
         }
     }
 

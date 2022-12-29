@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="calendarClickListener"
+            type="com.example.carapi.adapter.CalendarClickListener" />
+
+        <variable
+            name="currentDate"
+            type="java.time.LocalDate" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calendar_call_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/day_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/calendar_tv_background"
+            android:fontFamily="@font/lemon"
+            android:foreground="?android:selectableItemBackground"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:text="@string/calendar_cell_tv"
+            android:onClick="@{() -> calendarClickListener.onClick(currentDate)}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -88,6 +88,9 @@
             app:destination="@id/createOrderFragment"
             app:popUpToSaveState="true"
             app:popUpTo="@id/dashboardFragment"/>
+        <action
+            android:id="@+id/action_dashboardFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/bannerFragment"
@@ -155,4 +158,8 @@
         android:id="@+id/calculatorResultDialogFragment"
         android:name="com.example.carapi.ui.calculator.fragments.CalculatorResultDialogFragment"
         android:label="CalculatorResultDialogFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.carapi.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment" />
 </navigation>

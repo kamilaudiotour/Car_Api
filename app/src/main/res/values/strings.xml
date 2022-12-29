@@ -110,4 +110,18 @@
     <string name="no_network_iv">No internet Image</string>
     <string name="no_results_tv">Brak wyników</string>
     <string name="connect_network_tv">Połącz z internetem, by wyświetlić promocje</string>
+    <string name="month_year_tv">Grudzień 2021</string>
+    <string name="next_month_btn"><![CDATA[->]]></string>
+    <string name="previous_month_btn"><![CDATA[<-]]></string>
+    <string name="sunday_tv">NDZ</string>
+    <string name="monday_tv">PON</string>
+    <string name="tuesday_tv">WT</string>
+    <string name="wednesday_tv">ŚR</string>
+    <string name="thursday_tv">CZW</string>
+    <string name="friday_tv">PT</string>
+    <string name="saturday_tv">SOB</string>
+    <string name="add_event_btn">Dodaj termin</string>
+    <string name="save_btn">ZAPISZ</string>
+    <string name="delete_btn">Usuń termin</string>
+    <string name="calendar_cell_tv">5</string>
 </resources>

@@ -22,6 +22,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
     private lateinit var calendarAdapter: CalendarAdapter
     private val viewModel: CalendarViewModel by activityViewModels()
     private var isAddButtonClicked = false
+    private var isDeleteButtonClicked = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,47 +34,59 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         hideBottomNav()
 
         addButtonHandle()
+        deleteButtonHandle()
         saveButtonHandle()
 
         handleMonthChange()
-        handleBusyDatesFromDatabase()
-        handleSelectedDateUpdateRv()
-
-
+        handleSelectedDateChange()
 
         return binding.root
     }
 
+
     // load days in month data by observing viewModel days value
+    private fun loadCurrentMonthDaysData(){
+        viewModel.updateDays()
+        calendarAdapter.submitList(viewModel.days.value)
+    }
 
-    private fun handleBusyDatesFromDatabase() {
 
+    // update recycler view with latest list of busy dates list from firestore db
+    private fun handleBusyDatesFromDatabase(date: LocalDate) {
+        viewModel.busyDates.observe(viewLifecycleOwner) {
+            setupRv(date, it)
+        }
+    }
+
+    // delete given date from firestore database
+    private fun deleteDate(date: LocalDate){
+        viewModel.deleteDate(date)
+    }
+
+
+    // update recycler view with focus on selected date  by observing viewModel selected date value
+    private fun handleSelectedDateChange() {
         viewModel.selectedDate.observe(viewLifecycleOwner) { date ->
-            Log.d("selected date", date.toString())
+            handleBusyDatesFromDatabase(date)
             viewModel.monthYearFromDate(date)
             binding.monthYearTv.text = viewModel.currentMonthYear.value
-            viewModel.busyDates.observe(viewLifecycleOwner) {
-                setupRv(date, it)
-            }
             setupRv(date, viewModel.busyDates.value!!)
             viewModel.getDatesFromDatabase()
         }
     }
 
 
-    // update recycler view with focus on selected date  by observing viewModel selected date value
-    private fun handleSelectedDateUpdateRv() {
-
-
-    }
-
-    // initial recycler view setup
+    // initial recycler view setup and item click handling
     private fun setupRv(date: LocalDate, busyDates: List<String>) {
         calendarAdapter = CalendarAdapter(CalendarClickListener { clickedDate ->
             if (clickedDate != LocalDate.of(1930, 9, 30)) {
                 viewModel.onCalendarItemClicked(clickedDate)
                 if (isAddButtonClicked) {
+                    Log.d("clicked date", clickedDate.toString())
                     viewModel.addDateToDatabase(clickedDate)
+                }
+                if(isDeleteButtonClicked){
+                    deleteDate(clickedDate)
                 }
             }
         }, date, busyDates)
@@ -81,10 +94,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             layoutManager = GridLayoutManager(requireContext(), 7)
             adapter = calendarAdapter
         }
-        viewModel.updateDays()
-        calendarAdapter.submitList(viewModel.days.value)
-
-
+        loadCurrentMonthDaysData()
     }
 
     // listen buttons click to change month and update data
@@ -110,6 +120,14 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             isAddButtonClicked = true
         }
     }
+    private fun deleteButtonHandle() {
+        binding.deleteDateBtn.setOnClickListener {
+            binding.addDateBtn.visibility = View.GONE
+            binding.deleteDateBtn.visibility = View.GONE
+            binding.saveDateBtn.visibility = View.VISIBLE
+            isDeleteButtonClicked = true
+        }
+    }
 
     private fun saveButtonHandle() {
         binding.saveDateBtn.setOnClickListener {
@@ -117,6 +135,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             binding.deleteDateBtn.visibility = View.VISIBLE
             binding.saveDateBtn.visibility = View.GONE
             isAddButtonClicked = false
+            isDeleteButtonClicked = false
         }
     }
 }

@@ -17,7 +17,7 @@ class CalendarRepositoryImpl @Inject constructor(private val db: FirebaseFiresto
     override fun addDates(date: LocalDate) {
         val dbDate = hashMapOf<String, Any>()
         dbDate["date"] = date.toString()
-        db.collection("busy days").document().set(dbDate)
+        db.collection("busy days").document(date.toString()).set(dbDate)
     }
 
     override suspend fun getDates(): List<String> {
@@ -33,5 +33,9 @@ class CalendarRepositoryImpl @Inject constructor(private val db: FirebaseFiresto
 
         }
         return dateList
+    }
+
+    override fun deleteDates(date: LocalDate) {
+        db.collection("busy days").document(date.toString()).delete()
     }
 }

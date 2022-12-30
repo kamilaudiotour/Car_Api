@@ -40,6 +40,10 @@ class CalendarViewModel @Inject constructor(private val calendarRepository: Cale
         }
     }
 
+    fun deleteDate(date: LocalDate){
+        calendarRepository.deleteDates(date)
+    }
+
     fun onCalendarItemClicked(date: LocalDate) {
         selectedDate.value = date
         days.value = daysInMonthArray(selectedDate.value!!)

@@ -58,8 +58,6 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             setupRv(date, viewModel.busyDates.value!!)
             viewModel.getDatesFromDatabase()
         }
-
-
     }
 
 
@@ -78,7 +76,6 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
                     viewModel.addDateToDatabase(clickedDate)
                 }
             }
-            setupRv(clickedDate, busyDates)
         }, date, busyDates)
         binding.calendarRv.apply {
             layoutManager = GridLayoutManager(requireContext(), 7)

@@ -6,6 +6,8 @@ import com.example.carapi.repository.banners.BannersRepository
 import com.example.carapi.repository.banners.BannersRepositoryImpl
 import com.example.carapi.repository.calculator.CalculatorRepository
 import com.example.carapi.repository.calculator.CalculatorRepositoryImpl
+import com.example.carapi.repository.calendar.CalendarRepository
+import com.example.carapi.repository.calendar.CalendarRepositoryImpl
 import com.example.carapi.repository.car.CarRepository
 import com.example.carapi.repository.car.CarRepositoryImpl
 import com.example.carapi.repository.dimensions.DimensionsRepository
@@ -118,4 +120,8 @@ object AppModule {
     @Singleton
     fun providesDimensionsRepository(db: FirebaseFirestore): DimensionsRepository =
         DimensionsRepositoryImpl(db)
+
+    @Provides
+    @Singleton
+    fun providesCalendarRepository(db: FirebaseFirestore) : CalendarRepository = CalendarRepositoryImpl(db)
 }

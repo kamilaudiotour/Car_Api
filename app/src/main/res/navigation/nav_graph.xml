@@ -160,6 +160,6 @@
         android:label="CalculatorResultDialogFragment" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.carapi.ui.calendar.CalendarFragment"
+        android:name="com.example.carapi.ui.calendar.fragments.CalendarFragment"
         android:label="CalendarFragment" />
 </navigation>

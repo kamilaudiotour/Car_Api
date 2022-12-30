@@ -2,7 +2,10 @@ package com.example.carapi.ui.calendar
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.carapi.repository.calendar.CalendarRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -10,17 +13,31 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class CalendarViewModel @Inject constructor() : ViewModel() {
+class CalendarViewModel @Inject constructor(private val calendarRepository: CalendarRepository) :
+    ViewModel() {
 
     val selectedDate = MutableLiveData<LocalDate>()
 
     val currentMonthYear = MutableLiveData<String>()
 
-    val days = MutableLiveData<ArrayList<LocalDate>>()
+    val days = MutableLiveData<ArrayList<LocalDate>>(ArrayList())
+
+    val busyDates = MutableLiveData<List<String>>(emptyList())
 
     init {
+        getDatesFromDatabase()
         selectedDate.value = LocalDate.now()
         days.value = daysInMonthArray(selectedDate.value!!)
+    }
+
+    fun addDateToDatabase(date: LocalDate) {
+        calendarRepository.addDates(date)
+    }
+
+    fun getDatesFromDatabase() {
+        viewModelScope.launch {
+            busyDates.value = calendarRepository.getDates()
+        }
     }
 
     fun onCalendarItemClicked(date: LocalDate) {
@@ -53,6 +70,10 @@ class CalendarViewModel @Inject constructor() : ViewModel() {
             }
         }
         return daysInMonthArrayVar
+    }
+
+    fun updateDays() {
+        days.value = daysInMonthArray(selectedDate.value!!)
     }
 
     fun nextMonth() {

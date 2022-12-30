@@ -14,7 +14,7 @@ import java.time.LocalDate
 class CalendarAdapter(
     private val clickListener: CalendarClickListener,
     private val selectedDate: LocalDate,
-    private val dbArray: ArrayList<String>
+    private val dbArray:List<String>
 ) : ListAdapter<LocalDate, CalendarViewHolder>(DiffCallback) {
 
     inner class CalendarViewHolder(private var binding: ItemCalendarCellBinding) :

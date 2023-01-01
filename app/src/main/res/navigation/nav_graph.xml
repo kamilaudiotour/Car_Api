@@ -106,8 +106,12 @@
         android:label="AboutUsFragment" />
     <fragment
         android:id="@+id/createOrderFragment"
-        android:name="com.example.carapi.ui.order.CreateOrderFragment"
-        android:label="CreateOrderFragment" />
+        android:name="com.example.carapi.ui.order.fragments.CreateOrderFragment"
+        android:label="CreateOrderFragment" >
+        <action
+            android:id="@+id/action_createOrderFragment_to_ordersListDialogFragment"
+            app:destination="@id/ordersListDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.carapi.ui.profile.fragments.ProfileFragment"
@@ -162,4 +166,8 @@
         android:id="@+id/calendarFragment"
         android:name="com.example.carapi.ui.calendar.fragments.CalendarFragment"
         android:label="CalendarFragment" />
+    <dialog
+        android:id="@+id/ordersListDialogFragment"
+        android:name="com.example.carapi.ui.order.fragments.OrdersListDialogFragment"
+        android:label="OrdersListDialogFragment" />
 </navigation>

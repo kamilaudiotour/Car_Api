@@ -3,10 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/secondary">
+        android:background="@color/secondary"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondary"
+        android:paddingBottom="64dp"
+        >
 
 
         <androidx.cardview.widget.CardView
@@ -18,7 +26,8 @@
             app:cardCornerRadius="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,7 +35,8 @@
                 android:background="@drawable/box_black_radius"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                >
 
                 <TextView
                     android:id="@+id/profile_name_tv"
@@ -55,7 +65,7 @@
                     android:fontFamily="@font/tommy_bold"
                     android:text="@string/your_cars_tv"
                     android:textColor="@color/primary"
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/no_cars_tv"
@@ -65,13 +75,13 @@
                     android:text="@string/no_cars_tv"
                     android:textColor="@color/primary"
                     android:textSize="15sp" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/profile_cars_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingVertical="20dp"
+                    android:layout_marginTop="12dp"
                     tools:itemCount="0" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -89,6 +99,38 @@
                     android:textColor="@color/primary"
                     android:textSize="12sp"
                     tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/tommy_bold"
+                    android:text="@string/your_orders_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp" />
+
+
+
+
+
+                <TextView
+                    android:id="@+id/no_orders_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/no_orders_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="15sp"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/orders_cars_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingVertical="20dp"
+                    tools:itemCount="0" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/logout_btn"
@@ -132,4 +174,5 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

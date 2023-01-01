@@ -49,7 +49,6 @@ class ProjectRepositoryImpl @Inject constructor(
             val project = it.toObject(Project::class.java)
             if (project != null) {
                 projectList.add(project)
-                Log.d("firebase listen", projectList.toString())
             }
         }
 
@@ -57,13 +56,11 @@ class ProjectRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun isUserAdmin() : Boolean{
+    override suspend fun isUserAdmin(): Boolean {
         val userId = auth.currentUser?.uid.toString()
-        Log.d("isuseradmin", userId)
         val userDocRef = db.collection("users data").document(userId)
         val snapshot = userDocRef.get().await()
         val doc = snapshot.data?.get("isAdmin")
-        Log.d("isuseradmin", doc.toString())
         return doc.toString() == "true"
     }
 }

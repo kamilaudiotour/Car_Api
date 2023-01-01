@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.GetContent
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.carapi.R
@@ -27,7 +25,7 @@ class AddProjectDialogFragment : DialogFragment(R.layout.fragment_add_project_di
     private lateinit var binding: FragmentAddProjectDialogBinding
     private val viewModel: ProjectViewModel by activityViewModels()
 
-    @RequiresApi(Build.VERSION_CODES.P)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

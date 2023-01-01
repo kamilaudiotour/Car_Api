@@ -124,4 +124,27 @@
     <string name="save_btn">ZAPISZ</string>
     <string name="delete_btn">Usuń termin</string>
     <string name="calendar_cell_tv">5</string>
+    <string name="name_surname_et_hint">Wpisz dane…</string>
+    <string name="name_surname_tv">Imię i nazwisko</string>
+    <string name="variant_ready_color">Korzystam z gotowego koloru (w uwagach podać numer koloru)</string>
+    <string name="variant_own_foil">Mam swoją folię</string>
+    <string name="variant_own_project_foil">Mam projekt folii</string>
+    <string name="foil_variants_tv">Wariant folii</string>
+    <string name="phone_number_tv">Numer telefonu</string>
+    <string name="remarks_et_hint">Uwagi i dodatkowe informacje…</string>
+    <string name="choose_your_car_tv">Wybierz swój samochód</string>
+    <string name="submit_btn">Zatwierdź</string>
+    <string name="order_no_cars_tv">Brak samochodów na twojej liście, przejdź do profilu by dodać</string>
+    <string name="chosen_car_tv">Wybrane auto:</string>
+    <string name="ordered_by_tv">Zamówil:\n%1$s</string>
+    <string name="order_phone_number_tv">Telefon: \n%1$s</string>
+    <string name="order_foil_variant_tv">Wariant folii:\n%1$s</string>
+    <string name="order_email_tv">Email: \n%1$s</string>
+    <string name="order_remarks_tv">Uwagi: \n%1$s</string>
+    <string name="no_orders_tv">Brak zamówień</string>
+    <string name="admin_no_orders_tv">Brak zamówień złożonych przez użytkowników</string>
+    <string name="scroll_up_content_description">scroll up</string>
+    <string name="order_list_fab_content_description">Order List</string>
+    <string name="your_orders_tv">Twoje zamówienia</string>
+    <string name="make_model_summary_tv">%1$s %2$s</string>
 </resources>

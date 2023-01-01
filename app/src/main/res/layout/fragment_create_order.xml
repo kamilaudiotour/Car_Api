@@ -1,18 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/secondary">
 
-        <TextView
-            android:id="@+id/textView2"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box_black_half_radius"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Theme.CarApi">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/secondary"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                app:title="@string/create_order_tv"
+                app:titleEnabled="false">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/tommy_bold"
+                    android:text="@string/create_order_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="50sp"
+                    app:layout_collapseMode="parallax" />
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="48dp"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lemon"
+                    android:text="@string/choose_your_car_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cars_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_car_calculator" />
+
+                <TextView
+                    android:id="@+id/no_cars_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/tommy_bold"
+                    android:text="@string/order_no_cars_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/chosen_car_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/chosen_car_tv"
+                        android:textColor="@color/primary"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/car_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/tommy_bold"
+                        android:text="@string/make_model_summary_tv"
+                        android:textColor="@color/primary"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/foil_variants_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/lemon"
+                    android:text="@string/foil_variants_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/foil_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/own_project_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white"
+                        android:fontFamily="@font/lemon"
+                        android:text="@string/variant_own_project_foil"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/own_foil_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white"
+                        android:fontFamily="@font/lemon"
+                        android:text="@string/variant_own_foil"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/ready_color_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white"
+                        android:fontFamily="@font/lemon"
+                        android:text="@string/variant_ready_color"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/lemon"
+                    android:text="@string/name_surname_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/name_surname_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints="name"
+                    android:background="@drawable/et_background"
+                    android:hint="@string/name_surname_et_hint"
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/secondary_light"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/lemon"
+                    android:text="@string/phone_number_tv"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp" />
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/et_background"
+                    android:paddingHorizontal="8dp"
+                    app:ccp_arrowColor="@color/white"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_contentColor="@color/white"
+                    app:ccp_showFullName="true"
+                    app:ccp_showNameCode="true"
+                    app:ccp_showPhoneCode="true" />
+
+                <EditText
+                    android:id="@+id/phone_number_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints="phone"
+                    android:background="@drawable/et_background"
+                    android:hint="@string/name_surname_et_hint"
+                    android:inputType="phone"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/secondary_light"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/remarks_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:autofillHints="info"
+                    android:background="@drawable/et_background"
+                    android:gravity="top|start"
+                    android:hint="@string/remarks_et_hint"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:maxLines="8"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/secondary_light"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/box_orange_radius"
+                    android:clickable="true"
+                    android:fontFamily="@font/lemon"
+                    android:text="@string/submit_btn"
+                    android:textColor="@color/secondary"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CREATE ORDER FRAGMENT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:baselineAlignBottom="true"
+            android:contentDescription="@string/scroll_up_content_description"
+            android:src="@drawable/ic_upward_arrow"
+            app:backgroundTint="@color/primary"
+            app:fabSize="auto"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="center|bottom" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/order_list_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="@color/primary"
+            android:contentDescription="@string/order_list_fab_content_description"
+            android:src="@drawable/ic_create_order"
+            android:visibility="gone"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,5 +1,6 @@
 package com.example.carapi.ui.calculator.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -115,9 +116,8 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
                 ).any { it != null }
 
                 if (errorList) {
-                    Toast.makeText(requireContext(), "Wszystko zle", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Nieprawidłowe dane", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(requireContext(), "Wszystko dobrze", Toast.LENGTH_LONG).show()
                     viewModel.readValidatedForm(
                         sideText,
                         backText,
@@ -166,6 +166,7 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun launchWebView() {
         val webVideo = binding.ytVideoWv
         webVideo.settings.javaScriptEnabled = true

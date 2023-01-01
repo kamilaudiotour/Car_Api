@@ -14,6 +14,8 @@ import com.example.carapi.repository.dimensions.DimensionsRepository
 import com.example.carapi.repository.dimensions.DimensionsRepositoryImpl
 import com.example.carapi.repository.login.LoginRepository
 import com.example.carapi.repository.login.LoginRepositoryImpl
+import com.example.carapi.repository.order.CreateOrderRepository
+import com.example.carapi.repository.order.CreateOrderRepositoryImpl
 import com.example.carapi.repository.profile.ProfileRepository
 import com.example.carapi.repository.profile.ProfileRepositoryImpl
 import com.example.carapi.repository.project.ProjectRepository
@@ -124,4 +126,7 @@ object AppModule {
     @Provides
     @Singleton
     fun providesCalendarRepository(db: FirebaseFirestore) : CalendarRepository = CalendarRepositoryImpl(db)
+    @Provides
+    @Singleton
+    fun providesCreateOrderRepository(db:FirebaseFirestore, auth: FirebaseAuth): CreateOrderRepository = CreateOrderRepositoryImpl(db,auth)
 }

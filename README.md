@@ -1,6 +1,8 @@
 ---
-description: Strona 1 pokazująca coś tam
+description: Strona 1 pokazująca coś tam z commita nr 1
 ---
 
-# Untitled
+# Strona 1 do commita
+
+## Tutaj opisywana będzie funkcja &#x20;
 

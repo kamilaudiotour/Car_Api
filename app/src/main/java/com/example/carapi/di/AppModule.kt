@@ -54,14 +54,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    
-    to byla linia 57
-    linia 58
-    zmienmy linie 58    
-    tutaj chcialem zrobic zmiany tak o 
-    
-    
-    
     fun providesLogging(): HttpLoggingInterceptor = HttpLoggingInterceptor()
 
     @Provides
